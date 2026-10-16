@@ -1,0 +1,3915 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>درس نظم الغابات والحشائش في قارات العالم الجديد - الصف الثالث الإعدادي</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #134e4a;      
+            --primary-light: #0d9488; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #ecfeff;
+            background-image: radial-gradient(#a5d4ce 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(1.4rem, 5.5vw, 2.6rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #2dd4bf, #0f766e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(34, 197, 94, 0.25); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #134e4a; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #0d9488; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #134e4a;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #134e4a);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(224,231,255,0.9));
+            color: #134e4a;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23e0fbfc" width="100%" height="100%"/><circle fill="%23bae6fd" cx="20%" cy="30%" r="50"/><circle fill="%23bae6fd" cx="80%" cy="60%" r="70"/><circle fill="%23bae6fd" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #f0fdfa; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #042f2e, #134e4a, #0f766e);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #2dd4bf; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(21,128,61,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #2dd4bf, #0d9488, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #14b8a6, #0f766e);
+            border-bottom: 3px solid #134e4a; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(74, 222, 128, 0.15); color: #2dd4bf;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Result Share (WhatsApp) */
+        .share-box {
+            margin-top: 25px; background: #f0fdfa; border: 2px solid #99f6e4;
+            border-radius: 16px; padding: 20px; text-align: center;
+        }
+        .share-box h4 { color: #115e59; font-size: 1.2rem; margin-bottom: 12px; font-weight: 800;}
+        .share-name-input {
+            width: 100%; max-width: 320px; padding: 12px 16px; border-radius: 12px;
+            border: 2px solid #5eead4; font-size: 1.05rem; text-align: center;
+            font-family: 'Cairo', sans-serif; font-weight: 700; margin-bottom: 12px;
+            color: var(--dark);
+        }
+        .share-name-input:focus { outline: none; border-color: #0d9488; }
+        .btn-share {
+            background: linear-gradient(to bottom, #25d366, #1da851);
+            border-bottom-color: #128c3e; display: inline-flex; gap: 10px;
+        }
+        .share-warning { color: var(--danger); font-weight: 700; font-size: 0.9rem; margin-top: 8px; display: none; }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; left: 25px;
+            background: #25d366; color: white;
+            width: 65px; height: 65px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            text-decoration: none; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100; transition: all 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.15) rotate(-5deg); box-shadow: 0 12px 20px rgba(37, 211, 102, 0.6); }
+        .whatsapp-float svg { width: 35px; height: 35px; fill: currentColor; }
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        /* Map Challenge Style */
+        .map-stage { text-align: center; margin-bottom: 18px; }
+        .map-wrap { position: relative; display: inline-block; max-width: 100%; border-radius: 14px; overflow: hidden;
+            border: 4px solid #0d9488; box-shadow: 0 10px 20px rgba(0,0,0,0.12); background: #fff; }
+        .map-wrap img { display: block; max-width: 100%; max-height: 58vh; width: auto; height: auto; margin: 0 auto; }
+        .map-mask { position: absolute; background: linear-gradient(135deg, #f59e0b, #ea580c); border: 2px solid #fff;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;
+            font-weight: 900; font-size: clamp(0.9rem, 2.4vw, 1.4rem); box-shadow: 0 3px 8px rgba(0,0,0,0.35);
+            transition: opacity 0.5s ease; animation: maskPulse 1.6s ease-in-out infinite; }
+        .map-mask.revealed { opacity: 0; animation: none; }
+        @keyframes maskPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+        .map-stage.zoomed { overflow: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+        .map-stage.zoomed .map-wrap { max-width: none; }
+        .map-stage.zoomed .map-wrap img { max-width: none; max-height: none; width: min(1400px, 230vw); }
+        .map-wrap { cursor: zoom-in; }
+        .map-stage.zoomed .map-wrap { cursor: zoom-out; }
+        .map-hint { color: #0f766e; font-weight: 700; font-size: 0.95rem; margin-top: 8px; }
+        .map-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 600px) { .map-options { grid-template-columns: 1fr; } }
+        .map-options .btn { padding: 14px 10px; font-size: clamp(1rem, 3vw, 1.2rem); min-height: 60px; }
+        .map-options .btn.ok { background: linear-gradient(to bottom, #10b981, #047857) !important; }
+        .map-options .btn.bad { background: linear-gradient(to bottom, #ef4444, #b91c1c) !important; }
+        .header-logo { width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: contain; flex-shrink: 0; }
+        @media (max-width: 600px) { .header-logo { width: 170px; height: 170px; } }
+
+        /* اختيار طريقة اللعب + المنافسة بين فريقين */
+        .mode-modal { background: white; border-radius: 24px; padding: 28px 22px; width: 460px; max-width: 92%;
+            text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.35); max-height: 92vh; overflow-y: auto; }
+        .mode-modal h2 { color: var(--primary); font-size: 1.5rem; font-weight: 900; margin-bottom: 4px; }
+        .mode-modal .mode-sub { color: #64748b; font-weight: 700; margin-bottom: 18px; }
+        .mode-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 480px) { .mode-choices { grid-template-columns: 1fr; } }
+        .mode-choice { border: 3px solid #ccfbf1; border-radius: 18px; padding: 18px 10px; cursor: pointer; background: #f0fdfa;
+            transition: all .2s; font-weight: 800; color: var(--dark); }
+        .mode-choice:hover { transform: translateY(-3px); border-color: var(--primary-light); }
+        .mode-choice .mc-ico { font-size: 2.2rem; display: block; margin-bottom: 6px; }
+        .mode-choice small { display: block; color: #64748b; font-weight: 600; margin-top: 4px; font-size: .85rem; }
+        .team-setup { display: none; margin-top: 18px; text-align: right; }
+        .team-setup.show { display: block; }
+        .team-setup label { font-weight: 800; color: var(--primary); display: block; margin: 8px 0 4px; }
+        .team-setup input { width: 100%; padding: 11px 14px; border-radius: 12px; border: 2px solid #5eead4; font-family: 'Cairo', sans-serif;
+            font-size: 1.05rem; font-weight: 700; text-align: center; }
+        .team-setup input:focus { outline: none; border-color: var(--primary-light); }
+        .mode-actions { display: flex; gap: 10px; margin-top: 16px; }
+        .mode-actions .btn { flex: 1; }
+        .mode-cancel { background: #e2e8f0 !important; color: var(--dark) !important; border-bottom-color: #cbd5e1 !important; }
+        .team-board { display: none; max-width: 900px; width: calc(100% - 40px); margin: -8px auto 16px; gap: 10px; }
+        .team-board.show { display: flex; }
+        .team-card { flex: 1; background: white; border-radius: 14px; padding: 8px 12px; display: flex; align-items: center;
+            justify-content: space-between; gap: 8px; border: 3px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,.06);
+            font-weight: 800; transition: all .25s; min-width: 0; }
+        .team-card .tname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .team-card .tscore { font-size: 1.4rem; font-weight: 900; min-width: 36px; text-align: center; border-radius: 10px; padding: 0 8px; color: white; }
+        .team-card.t0 .tscore { background: #0d9488; } .team-card.t1 .tscore { background: #ea580c; }
+        .team-card.active.t0 { border-color: #0d9488; transform: scale(1.03); background: #f0fdfa; }
+        .team-card.active.t1 { border-color: #ea580c; transform: scale(1.03); background: #fff7ed; }
+        .team-card .turn-tag { font-size: .75rem; padding: 2px 8px; border-radius: 10px; background: #fef3c7; color: #92400e; display: none; }
+        .team-card.active .turn-tag { display: inline-block; }
+        .winner-box { border-radius: 20px; padding: 22px; margin: 18px 0; color: white; background: linear-gradient(135deg, #f59e0b, #ea580c); }
+        .winner-box h3 { font-size: 1.8rem; font-weight: 900; }
+        .final-scores { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+        .final-scores div { background: rgba(255,255,255,.2); border-radius: 14px; padding: 8px 18px; font-weight: 800; font-size: 1.15rem; }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img src="logo.jpg" alt="الأستاذ أحمد نورالدين" class="header-logo">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">مع الأستاذ أَحْمَد نُورالدِّين</h1>
+                    <h2>الصَّفُّ الثَّالِثُ الإِعْدَادِيُّ - الْوَحْدَةُ الثَّالِثَةُ - الدَّرْسُ الأَوَّلُ: نُظُمُ الغَابَاتِ وَالحَشَائِشِ فِي قَارَّاتِ العَالَمِ الجَدِيدِ</h2>
+                    <p style="margin-top: 10px;">الدِّرَاسَاتُ الاجْتِمَاعِيَّةُ</p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ecfeff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 25</span>
+        </div>
+        <div class="team-board" id="team-board">
+            <div class="team-card t0" id="team-card-0"><span class="tname" id="team-name-0">الفريق الأول</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-0">0</span></div>
+            <div class="team-card t1" id="team-card-1"><span class="tname" id="team-name-1">الفريق الثاني</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-1">0</span></div>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+
+    <!-- نافذة اختيار طريقة اللعب -->
+    <div class="overlay" id="mode-overlay">
+        <div class="mode-modal">
+            <h2 id="mode-game-title">اختر طريقة اللعب</h2>
+            <div class="mode-sub">في كل مرة تظهر ٢٠ سؤالًا مختلفة بشكل عشوائي</div>
+            <div class="mode-choices">
+                <div class="mode-choice" onclick="chooseSolo()"><span class="mc-ico">👤</span>لعب فردي<small>العب وحدك واعرف نتيجتك</small></div>
+                <div class="mode-choice" onclick="chooseTeams()"><span class="mc-ico">🏆</span>منافسة بين فريقين<small>الفريقان يتبادلان الأسئلة</small></div>
+            </div>
+            <div class="team-setup" id="team-setup">
+                <label for="team-a">اسم الفريق الأول</label>
+                <input id="team-a" type="text" maxlength="25" value="الفريق الأول">
+                <label for="team-b">اسم الفريق الثاني</label>
+                <input id="team-b" type="text" maxlength="25" value="الفريق الثاني">
+                <div class="mode-actions">
+                    <button class="btn" onclick="startTeams()">🚀 ابدأ المنافسة</button>
+                </div>
+            </div>
+            <div class="mode-actions"><button class="btn mode-cancel" onclick="closeModePicker()">إلغاء</button></div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | دروس وألعاب تعليمية</p>
+        <p class="designer">الأستاذ / أَحْمَد نُورالدِّين - 01022364812</p>
+    </footer>
+
+    <!-- زر الواتساب -->
+    <a href="https://wa.me/201022364812" class="whatsapp-float" target="_blank" title="تواصل معنا">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/>
+        </svg>
+    </a>
+
+<script>
+    const LESSON_NAME = "الدراسات الاجتماعية: نظم الغابات والحشائش في قارات العالم الجديد - الصف الثالث الإعدادي";
+    const allGamesData = [
+    {
+        "id": "mcq_1",
+        "title": "اختيار من متعدد",
+        "type": "mcq",
+        "desc": "أسئلة اختيار من متعدد حول نظم الغابات والحشائش في قارات العالم الجديد",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"></polygon><path d=\"M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07\"></path></svg>",
+        "questions": [
+            {
+                "q": "من أسباب تنوع النظم البيئية في قارات العالم الجديد:",
+                "options": [
+                    "تشابه المناخ",
+                    "عدم وجود جبال",
+                    "الموقع الجغرافي والامتداد الفلكي وتنوع مظاهر السطح",
+                    "قلة المساحة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "تُعد الغابات من أهم النظم البيئية لما تتميز به من:",
+                "options": [
+                    "قلة النباتات",
+                    "ندرة الأمطار",
+                    "تنوع حيوي هائل ودور في التوازن البيئي",
+                    "انعدام الحيوانات"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ينتشر نظام الغابات المدارية المطيرة في أمريكا الشمالية في:",
+                "options": [
+                    "ألاسكا",
+                    "أقصى جنوبها ومعظم جزر البحر الكاريبي",
+                    "شمال كندا",
+                    "غرب كاليفورنيا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تضم أمريكا الجنوبية نحو ... مساحة الغابات المدارية المطيرة في العالم:",
+                "options": [
+                    "عُشر",
+                    "ربع",
+                    "ثلث",
+                    "نصف"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "يتركز نظام الغابات المدارية المطيرة في أمريكا الجنوبية في حوض نهر:",
+                "options": [
+                    "الأمازون",
+                    "البارانا",
+                    "المسيسيبي",
+                    "أورينوكو"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكبر غابة مطيرة في العالم:",
+                "options": [
+                    "غابات الكونغو",
+                    "غابات الأمازون",
+                    "غابات كندا",
+                    "غابات نيوغينيا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تُعد غابات الأمازون الموطن الأصلي لأشجار:",
+                "options": [
+                    "الصنوبر",
+                    "البلوط",
+                    "الصبار",
+                    "المطاط"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "تسمى غابات الأمازون «رئة العالم» لأنها:",
+                "options": [
+                    "كثيرة الحيوانات",
+                    "تسهم في إنتاج الأكسجين وامتصاص ثاني أكسيد الكربون",
+                    "بها أطول نهر",
+                    "تنتج البترول"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تتسم أشجار الغابات المدارية في أمريكا الشمالية بأنها:",
+                "options": [
+                    "أشجار صحراوية",
+                    "أشجار صنوبرية",
+                    "أكثر كثافة من الأمازون",
+                    "أقل كثافة وضخامة وتشابكًا من غابات الأمازون"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "يتركز نظام الغابات المدارية المطيرة في أستراليا في جزيرة:",
+                "options": [
+                    "مدغشقر",
+                    "تسمانيا",
+                    "نيو غينيا",
+                    "نيوزيلندا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "يوجد نظام غابات البحر المتوسط في أمريكا الشمالية غرب ولاية:",
+                "options": [
+                    "فلوريدا",
+                    "تكساس",
+                    "كاليفورنيا",
+                    "نيويورك"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "يمتد نظام غابات البحر المتوسط في أمريكا الجنوبية على طول ساحل ووسط:",
+                "options": [
+                    "بيرو",
+                    "الأرجنتين",
+                    "البرازيل",
+                    "شيلي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "يتركز نظام غابات البحر المتوسط في أستراليا في الأجزاء:",
+                "options": [
+                    "الوسطى",
+                    "الشمالية",
+                    "الجنوبية والجنوبية الغربية",
+                    "الشرقية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "تدهورت مساحة غابات البحر المتوسط في شيلي بنسب وصلت إلى نحو:",
+                "options": [
+                    "٥٠٪",
+                    "٩٠٪",
+                    "٢٥٪",
+                    "١٠٪"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أدى تدهور غابات البحر المتوسط في شيلي إلى:",
+                "options": [
+                    "زيادة الحيوانات",
+                    "فقدان التنوع البيولوجي وانقراض بعض الأنواع",
+                    "ازدهار الزراعة",
+                    "زيادة الأمطار"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ينتشر نظام الغابات الموسمية في العروض:",
+                "options": [
+                    "الصحراوية",
+                    "القطبية",
+                    "المدارية",
+                    "المعتدلة الباردة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "يتميز نظام الغابات الموسمية بأمطار ... غزيرة:",
+                "options": [
+                    "شتوية",
+                    "صيفية",
+                    "نادرة",
+                    "طوال العام"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يمتد فصل الجفاف في نظام الغابات الموسمية من:",
+                "options": [
+                    "٨ - ١٠ أشهر",
+                    "١ - ٢ شهر",
+                    "لا يوجد جفاف",
+                    "٤ - ٦ أشهر"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ينتشر نظام الغابات الموسمية في أمريكا الجنوبية خاصة في المناطق الشرقية من:",
+                "options": [
+                    "شيلي",
+                    "البرازيل",
+                    "كولومبيا",
+                    "الأرجنتين"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تتعرض بعض أشجار الغابات الموسمية إلى ... خلال موسم الجفاف:",
+                "options": [
+                    "الفيضانات",
+                    "الثلوج",
+                    "الحرائق",
+                    "الأعاصير البحرية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "تستحوذ أمريكا الشمالية على نحو ... من مساحة الغابات النفضية في العالم:",
+                "options": [
+                    "١٠٪",
+                    "٩٠٪",
+                    "٥٠٪",
+                    "٢٥٪"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "يوجد نظام الغابات النفضية في أمريكا الشمالية في المناطق الشرقية من:",
+                "options": [
+                    "كاليفورنيا",
+                    "ألاسكا",
+                    "المكسيك",
+                    "الولايات المتحدة وكندا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "تقلصت مساحة الغابات النفضية في أمريكا الشمالية بسبب:",
+                "options": [
+                    "البراكين",
+                    "الثلوج",
+                    "التصحر الطبيعي",
+                    "الزراعة والرعي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "يظهر نظام الغابات النفضية في أمريكا الجنوبية في الساحل الجنوبي لدولة:",
+                "options": [
+                    "فنزويلا",
+                    "البرازيل",
+                    "شيلي",
+                    "الإكوادور"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ينتشر نظام الغابات النفضية في أستراليا في:",
+                "options": [
+                    "السواحل الجنوبية الشرقية وبعض الجزر التابعة",
+                    "الوسط الصحراوي",
+                    "الغرب",
+                    "الشمال"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "نظام الغابات الصنوبرية يسمى أيضًا:",
+                "options": [
+                    "الغابات المطيرة",
+                    "الغابات الموسمية",
+                    "الغابات المخروطية",
+                    "الغابات النفضية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "يكاد نظام الغابات الصنوبرية يختفي من قارة:",
+                "options": [
+                    "أستراليا",
+                    "أمريكا الجنوبية",
+                    "أمريكا الشمالية",
+                    "أوروبا"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تنتشر الغابات الصنوبرية في أمريكا الشمالية فوق منحدرات جبال:",
+                "options": [
+                    "روكي",
+                    "الهيمالايا",
+                    "الأنديز",
+                    "الأبلاش فقط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تنتشر الغابات الصنوبرية في أقصى جنوب أمريكا الجنوبية فوق منحدرات جبال:",
+                "options": [
+                    "الأنديز",
+                    "روكي",
+                    "الألب",
+                    "أطلس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يُعد نظام الغابات الصنوبرية مصدرًا مهمًا لـ:",
+                "options": [
+                    "البترول",
+                    "القطن",
+                    "الأخشاب المستخدمة في البناء والصناعات الخشبية",
+                    "المطاط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "يواجه نحو ... أشجار الغابات الصنوبرية خطر التدهور والانقراض:",
+                "options": [
+                    "ثلث",
+                    "ربع",
+                    "عُشر",
+                    "نصف"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من أخطار تقلص الغابات في العالم الجديد:",
+                "options": [
+                    "حرائق الغابات والزحف العمراني والزراعي",
+                    "كثرة الأنهار",
+                    "زيادة الأمطار",
+                    "انخفاض الحرارة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تمثل السافانا مناطق انتقالية بين:",
+                "options": [
+                    "الغابات المدارية المطيرة والصحاري الحارة",
+                    "الحشائش المعتدلة والقطبية",
+                    "الغابات النفضية والمتوسطية",
+                    "الغابات الصنوبرية والتندرا"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تشغل السافانا مساحات واسعة في شمال قارة:",
+                "options": [
+                    "أستراليا",
+                    "آسيا",
+                    "أوروبا",
+                    "أمريكا الشمالية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تنتشر حشائش السافانا في أمريكا الجنوبية في شمالها وفي هضبة:",
+                "options": [
+                    "الأنديز",
+                    "المكسيك",
+                    "البرازيل",
+                    "بتاجونيا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من أشهر حيوانات السافانا في الأمريكتين:",
+                "options": [
+                    "الكنغر",
+                    "الدب القطبي",
+                    "ثور المسك",
+                    "النمر الأمريكي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من أشهر حيوانات السافانا في أستراليا:",
+                "options": [
+                    "ثور المسك",
+                    "النمر الأمريكي",
+                    "نسر الأنديز",
+                    "تمساح المياه المالحة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "يُعد تمساح المياه المالحة من أكبر ... في العالم:",
+                "options": [
+                    "الثدييات",
+                    "الزواحف",
+                    "الأسماك",
+                    "الطيور"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يضم نظام الحشائش المعتدلة نوعين هما:",
+                "options": [
+                    "التندرا والإستبس",
+                    "البراري والسافانا",
+                    "الإستبس والبراري",
+                    "السافانا والتندرا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "حشائش خشنة يتخللها قليل من الأشجار:",
+                "options": [
+                    "البراري",
+                    "الإستبس",
+                    "السافانا",
+                    "التندرا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تتميز حشائش البراري عن الإستبس بـ:",
+                "options": [
+                    "قصرها",
+                    "خشونتها",
+                    "عدم وجود أشجار",
+                    "كثافتها وطولها وانتشار الأشجار بها"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "يمتد نظام الحشائش المعتدلة في العروض:",
+                "options": [
+                    "المدارية",
+                    "الاستوائية",
+                    "المعتدلة الوسطى",
+                    "القطبية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "يظهر نوعا الحشائش المعتدلة في أمريكا الشمالية في:",
+                "options": [
+                    "كاليفورنيا",
+                    "ألاسكا",
+                    "جبال روكي",
+                    "السهول الوسطى"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "يمتد نظام الحشائش المعتدلة في أستراليا في الأجزاء:",
+                "options": [
+                    "الجبلية",
+                    "القطبية",
+                    "الساحلية الشمالية",
+                    "الداخلية السهلية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "نظام الحشائش الباردة يسمى:",
+                "options": [
+                    "السافانا",
+                    "الإستبس",
+                    "البراري",
+                    "التندرا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "يوجد نظام التندرا خاصة في شمال:",
+                "options": [
+                    "البرازيل",
+                    "أستراليا",
+                    "المكسيك",
+                    "كندا وألاسكا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "يوجد نظام التندرا أيضًا على المرتفعات الجبلية الشاهقة مثل:",
+                "options": [
+                    "جبال الأبلاش",
+                    "هضبة البرازيل",
+                    "جبال الأنديز",
+                    "السهول الوسطى"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "يملك ثور المسك أغلى:",
+                "options": [
+                    "صوف طبيعي في العالم",
+                    "جلد",
+                    "ريش",
+                    "عاج"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يُعد نسر الأنديز من أكبر ... في العالم:",
+                "options": [
+                    "الثدييات",
+                    "الطيور",
+                    "الزواحف",
+                    "الأسماك"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تبرز منطقة البمباس في دولتي:",
+                "options": [
+                    "الأرجنتين وأوروجواي",
+                    "البرازيل وشيلي",
+                    "كندا والولايات المتحدة",
+                    "بيرو والإكوادور"
+                ],
+                "ans": 0
+            }
+        ]
+    },
+    {
+        "id": "bubbles_2",
+        "title": "الفقاعات المتساقطة",
+        "type": "bubbles",
+        "desc": "التقط الفقاعة ذات الإجابة الصحيحة عن نظم الغابات والحشائش في قارات العالم الجديد",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"></path><path d=\"M22 12A10 10 0 0 0 12 2v10z\"></path></svg>",
+        "questions": [
+            {
+                "q": "أكبر غابة مطيرة؟",
+                "options": [
+                    "كندا",
+                    "نيوغينيا",
+                    "الأمازون",
+                    "الكونغو"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لقب غابات الأمازون؟",
+                "options": [
+                    "سقف العالم",
+                    "قلب العالم",
+                    "رئة العالم",
+                    "سلة الغذاء"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "موطن أشجار المطاط؟",
+                "options": [
+                    "كندا",
+                    "شيلي",
+                    "الأمازون",
+                    "كاليفورنيا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "نصيب أمريكا الجنوبية من الغابات المطيرة؟",
+                "options": [
+                    "الثلث",
+                    "النصف",
+                    "العُشر",
+                    "الربع"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "جزيرة الغابات المطيرة بأستراليا؟",
+                "options": [
+                    "نيو غينيا",
+                    "سومطرة",
+                    "نيوزيلندا",
+                    "تسمانيا"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ولاية غابات البحر المتوسط؟",
+                "options": [
+                    "كاليفورنيا",
+                    "نيويورك",
+                    "ألاسكا",
+                    "تكساس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "دولة غابات المتوسط بأمريكا الجنوبية؟",
+                "options": [
+                    "شيلي",
+                    "البرازيل",
+                    "بيرو",
+                    "فنزويلا"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "نسبة تدهور غابات شيلي؟",
+                "options": [
+                    "٩٠٪",
+                    "٢٠٪",
+                    "٧٥٪",
+                    "٥٠٪"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أمطار الغابات الموسمية؟",
+                "options": [
+                    "شتوية",
+                    "نادرة",
+                    "طوال العام",
+                    "صيفية غزيرة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "مدة جفاف الغابات الموسمية؟",
+                "options": [
+                    "سنة",
+                    "٤ - ٦ أشهر",
+                    "١٠ أشهر",
+                    "شهر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "خطر يهدد الغابات الموسمية؟",
+                "options": [
+                    "الحرائق",
+                    "الثلوج",
+                    "الفيضانات",
+                    "الزلازل"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "دولة الغابات الموسمية بأمريكا الجنوبية؟",
+                "options": [
+                    "البرازيل",
+                    "الأرجنتين",
+                    "أوروجواي",
+                    "شيلي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "نصيب أمريكا الشمالية من الغابات النفضية؟",
+                "options": [
+                    "٩٠٪",
+                    "١٠٪",
+                    "٢٥٪",
+                    "٥٠٪"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "سبب تقلص الغابات النفضية؟",
+                "options": [
+                    "الثلوج",
+                    "الزراعة والرعي",
+                    "البراكين",
+                    "الأعاصير"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "اسم آخر للغابات الصنوبرية؟",
+                "options": [
+                    "النفضية",
+                    "المطيرة",
+                    "الموسمية",
+                    "المخروطية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "قارة تكاد تخلو من الصنوبرية؟",
+                "options": [
+                    "أمريكا الشمالية",
+                    "أمريكا الجنوبية",
+                    "أستراليا",
+                    "آسيا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "جبال الصنوبرية بأمريكا الشمالية؟",
+                "options": [
+                    "أطلس",
+                    "روكي",
+                    "الألب",
+                    "الأنديز"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "جبال الصنوبرية بأمريكا الجنوبية؟",
+                "options": [
+                    "الأبلاش",
+                    "الأنديز",
+                    "الهيمالايا",
+                    "روكي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أهم موارد الغابات الصنوبرية؟",
+                "options": [
+                    "القطن",
+                    "البترول",
+                    "الأخشاب",
+                    "المطاط"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "نسبة الصنوبرية المهددة؟",
+                "options": [
+                    "النصف",
+                    "العُشر",
+                    "الثلث",
+                    "الربع"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "حشائش انتقالية حارة؟",
+                "options": [
+                    "الإستبس",
+                    "البراري",
+                    "التندرا",
+                    "السافانا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "حيوان السافانا بالأمريكتين؟",
+                "options": [
+                    "الكنغر",
+                    "النمر الأمريكي",
+                    "الأسد",
+                    "ثور المسك"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "حيوان السافانا بأستراليا؟",
+                "options": [
+                    "النمر الأمريكي",
+                    "الدب",
+                    "نسر الأنديز",
+                    "تمساح المياه المالحة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكبر الزواحف في العالم؟",
+                "options": [
+                    "تمساح المياه المالحة",
+                    "السلحفاة",
+                    "الثعبان",
+                    "السحلية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "هضبة السافانا بأمريكا الجنوبية؟",
+                "options": [
+                    "التبت",
+                    "البرازيل",
+                    "بتاجونيا",
+                    "الدكن"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "حشائش خشنة قليلة الأشجار؟",
+                "options": [
+                    "الإستبس",
+                    "السافانا",
+                    "التندرا",
+                    "البراري"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "حشائش كثيفة طويلة؟",
+                "options": [
+                    "الصحراوية",
+                    "التندرا",
+                    "البراري",
+                    "الإستبس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عروض الحشائش المعتدلة؟",
+                "options": [
+                    "المدارية",
+                    "المعتدلة الوسطى",
+                    "القطبية",
+                    "الاستوائية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "موقع الحشائش المعتدلة بأمريكا الشمالية؟",
+                "options": [
+                    "كاليفورنيا",
+                    "ألاسكا",
+                    "السهول الوسطى",
+                    "الكاريبي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "حشائش باردة؟",
+                "options": [
+                    "التندرا",
+                    "الإستبس",
+                    "البراري",
+                    "السافانا"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "موقع التندرا؟",
+                "options": [
+                    "المكسيك",
+                    "البرازيل",
+                    "شيلي",
+                    "شمال كندا وألاسكا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "حيوان صوفه الأغلى؟",
+                "options": [
+                    "ثور المسك",
+                    "الجمل",
+                    "الكنغر",
+                    "النمر"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من أكبر الطيور؟",
+                "options": [
+                    "الحمام",
+                    "الببغاء",
+                    "البطريق",
+                    "نسر الأنديز"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "منطقة البمباس في؟",
+                "options": [
+                    "الأرجنتين",
+                    "البرازيل",
+                    "أستراليا",
+                    "كندا"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "دولة أخرى بها البمباس؟",
+                "options": [
+                    "أوروجواي",
+                    "المكسيك",
+                    "بيرو",
+                    "شيلي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "سبب محدودية أثر الإنسان في التندرا؟",
+                "options": [
+                    "الأنهار",
+                    "وفرة الغابات",
+                    "قسوة المناخ",
+                    "كثافة السكان"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "غاز تمتصه الأمازون؟",
+                "options": [
+                    "ثاني أكسيد الكربون",
+                    "الهيدروجين",
+                    "النيتروجين",
+                    "الأكسجين"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "غاز تنتجه الأمازون؟",
+                "options": [
+                    "الميثان",
+                    "الأكسجين",
+                    "الأوزون",
+                    "ثاني أكسيد الكربون"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "خطر الزحف على الغابات؟",
+                "options": [
+                    "البحري",
+                    "الجليدي",
+                    "البركاني",
+                    "العمراني والزراعي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "نظام بأقصى جنوب أمريكا الشمالية والكاريبي؟",
+                "options": [
+                    "النفضية",
+                    "الغابات المدارية المطيرة",
+                    "التندرا",
+                    "الصنوبرية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "موقع الغابات النفضية بأستراليا؟",
+                "options": [
+                    "السواحل الجنوبية الشرقية",
+                    "الشمال",
+                    "الوسط",
+                    "الغرب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "موقع غابات المتوسط بأستراليا؟",
+                "options": [
+                    "الجنوب والجنوب الغربي",
+                    "الشمال",
+                    "الشرق",
+                    "الوسط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "الساحل النفضي بأمريكا الجنوبية؟",
+                "options": [
+                    "شمال البرازيل",
+                    "الأرجنتين",
+                    "كولومبيا",
+                    "جنوب شيلي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "نهر الغابات المطيرة؟",
+                "options": [
+                    "النيل",
+                    "الأمازون",
+                    "المسيسيبي",
+                    "الكونغو"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "بديل الحشائش في البمباس؟",
+                "options": [
+                    "الغابات",
+                    "المراعي وزراعة الحبوب",
+                    "المدن الصناعية",
+                    "الصحاري"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "غذاء سكان التندرا؟",
+                "options": [
+                    "الصناعة",
+                    "زراعة القمح",
+                    "التجارة",
+                    "صيد الأسماك والحيوانات"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "عدد نظم الغابات بالعالم الجديد؟",
+                "options": [
+                    "سبعة",
+                    "اثنان",
+                    "خمسة",
+                    "ثلاثة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عدد نظم الحشائش بالعالم الجديد؟",
+                "options": [
+                    "ثلاثة",
+                    "أربعة",
+                    "اثنان",
+                    "خمسة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "موقع الحشائش المعتدلة بأستراليا؟",
+                "options": [
+                    "الداخل السهلي",
+                    "الجبال",
+                    "الجزر",
+                    "السواحل الشمالية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "موقع آخر للتندرا؟",
+                "options": [
+                    "المرتفعات الجبلية الشاهقة",
+                    "الصحاري",
+                    "الأحواض النهرية",
+                    "السهول الساحلية"
+                ],
+                "ans": 0
+            }
+        ]
+    },
+    {
+        "id": "shooting_3",
+        "title": "التنشين والاصطياد",
+        "type": "shooting",
+        "desc": "صوّب نحو الكلمة الصحيحة لإكمال عبارات نظم الغابات والحشائش في قارات العالم الجديد",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+        "questions": [
+            {
+                "q": "أكمل: «تضم قارات العالم الجديد معظم أنواع ... الموجودة في العالم».",
+                "options": [
+                    "البحار",
+                    "الجبال",
+                    "الصحاري",
+                    "الغابات"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «تمتد نظم الغابات عبر نطاقات ... متعددة».",
+                "options": [
+                    "سياسية",
+                    "مناخية",
+                    "زمنية",
+                    "سكانية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «تتعدد أنواع الغابات والحشائش وتختلف مساحتها وتوزيعها ... من قارة لأخرى».",
+                "options": [
+                    "السياسي",
+                    "الجغرافي",
+                    "التاريخي",
+                    "الاقتصادي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «تمتد الدول عبر عدد كبير من دوائر ...».",
+                "options": [
+                    "الجغرافيا",
+                    "الطول",
+                    "العرض",
+                    "الزمن"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «يظهر نظام الغابات المطيرة في أستراليا بشريط ضيق بمحاذاة الساحل ... الشرقي».",
+                "options": [
+                    "الجنوبي",
+                    "الغربي",
+                    "الأوسط",
+                    "الشمالي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «تُصنف غابات البحر المتوسط في شيلي ضمن مناطق التنوع ... العالمية».",
+                "options": [
+                    "الصناعي",
+                    "السكاني",
+                    "الثقافي",
+                    "البيولوجي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «تواجه غابات البحر المتوسط في شيلي في السنوات الأخيرة تحديات ...».",
+                "options": [
+                    "بسيطة",
+                    "خطيرة",
+                    "محدودة",
+                    "معدومة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «يوجد نظام الغابات الموسمية في مساحات محدودة في أقصى جنوب قارة أمريكا ...».",
+                "options": [
+                    "الجنوبية",
+                    "الوسطى",
+                    "الشمالية",
+                    "اللاتينية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «يوجد نظام الغابات الموسمية في أستراليا في أجزاء من نيو غينيا و... أستراليا».",
+                "options": [
+                    "جنوب",
+                    "شمال",
+                    "غرب",
+                    "وسط"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «يوجد نظام الغابات النفضية في أمريكا الشمالية في نطاق ... يمتد في المناطق الشرقية».",
+                "options": [
+                    "صغير",
+                    "ضيق",
+                    "متصل",
+                    "متقطع"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «ينتشر نظام الغابات الصنوبرية في الأجزاء الشمالية و... الغربية من أمريكا الشمالية».",
+                "options": [
+                    "الجنوبية",
+                    "الشرقية",
+                    "الشمالية",
+                    "الوسطى"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «يوجد نظام الغابات الصنوبرية في ... الأمريكتين».",
+                "options": [
+                    "إفريقيا",
+                    "الأمريكتين",
+                    "أستراليا",
+                    "آسيا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «تتعرض نظم الغابات في العالم الجديد إلى ... مساحاتها».",
+                "options": [
+                    "ثبات",
+                    "زيادة",
+                    "تضاعف",
+                    "تقلص"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «يجب اقتراح إجراءات ل... نظم الغابات في العالم».",
+                "options": [
+                    "إزالة",
+                    "قطع",
+                    "حماية",
+                    "حرق"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «تشغل السافانا مساحات صغيرة في جنوب قارة أمريكا ...».",
+                "options": [
+                    "الوسطى",
+                    "الشمالية",
+                    "اللاتينية",
+                    "الجنوبية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «يتميز نظام السافانا بتنوع ... كبير».",
+                "options": [
+                    "بيولوجي",
+                    "سكاني",
+                    "صناعي",
+                    "ثقافي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «يظهر في أمريكا الشمالية نوعا الحشائش المعتدلة في نطاقين ... متجاورين».",
+                "options": [
+                    "عرضيين",
+                    "دائريين",
+                    "متباعدين",
+                    "طوليين"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «ينتشر نظام الحشائش المعتدلة في مساحات ... بأمريكا الجنوبية».",
+                "options": [
+                    "شاسعة",
+                    "معدومة",
+                    "صغيرة",
+                    "محدودة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «يمتد نظام الحشائش المعتدلة في بعض المناطق من ...».",
+                "options": [
+                    "نيو غينيا",
+                    "تسمانيا",
+                    "نيوزيلندا",
+                    "الكاريبي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «يجب مناقشة أهمية نظام الحشائش المعتدلة وأهم ... التي يواجهها».",
+                "options": [
+                    "الحيوانات",
+                    "المزايا",
+                    "الأمطار",
+                    "الأخطار"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «من حيوانات التندرا ثور ...».",
+                "options": [
+                    "الجاموس",
+                    "الياك",
+                    "المسك",
+                    "البيسون"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «يمثل نظام الحشائش المعتدلة نموذجًا واضحًا للتدخل ... في البيئة الطبيعية».",
+                "options": [
+                    "المناخي",
+                    "الطبيعي",
+                    "البشري",
+                    "الحيواني"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «تحول نظام الحشائش المعتدلة إلى نظام بيئي من صنع ...».",
+                "options": [
+                    "المناخ",
+                    "الطبيعة",
+                    "الإنسان",
+                    "الحيوان"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «استُبدلت الحشائش بمراع لتربية ... التي يعتمد عليها في الغذاء والكساء».",
+                "options": [
+                    "الماشية",
+                    "الأسماك",
+                    "الحشرات",
+                    "الطيور"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «استبدلت الحشائش أيضًا بزراعة ... ومحاصيل أخرى».",
+                "options": [
+                    "المطاط",
+                    "الأشجار",
+                    "القطن فقط",
+                    "الحبوب"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «تبرز منطقة البمباس بوصفها أوضح مثال على التدخل البشري ...».",
+                "options": [
+                    "المحدود",
+                    "الواسع",
+                    "البسيط",
+                    "المعدوم"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «اقتصر الوجود البشري في التندرا على مراكز استقرار ... في المناطق الساحلية».",
+                "options": [
+                    "دائمة",
+                    "متنقلة",
+                    "مؤقتة",
+                    "بدوية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «يعيش سكان التندرا بجوار الأنهار و...».",
+                "options": [
+                    "الغابات المطيرة",
+                    "الصحاري",
+                    "البحيرات",
+                    "الجبال البركانية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «يعتمد سكان التندرا على جمع الثمار و... الطبيعية».",
+                "options": [
+                    "الأسواق",
+                    "النباتات",
+                    "المصانع",
+                    "المحاصيل"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «تُعد غابات الأمازون منظمًا ... العالمي».",
+                "options": [
+                    "للتجارة",
+                    "للسكان",
+                    "للصناعة",
+                    "للمناخ"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «تسهم غابات الأمازون بشكل كبير في إنتاج ...».",
+                "options": [
+                    "البترول",
+                    "الذهب",
+                    "الفحم",
+                    "الأكسجين"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «تمتص غابات الأمازون غاز ثاني أكسيد ...».",
+                "options": [
+                    "الكبريت",
+                    "الهيدروجين",
+                    "الكربون",
+                    "النيتروجين"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «أشجار الغابات المدارية في أمريكا الشمالية أقل ضخامة و...».",
+                "options": [
+                    "تشابكًا",
+                    "عمرًا",
+                    "ارتفاعًا فقط",
+                    "خضرة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «يتركز نظام الغابات المطيرة في أمريكا الجنوبية في ... القارة».",
+                "options": [
+                    "شمال",
+                    "غرب",
+                    "جنوب",
+                    "وسط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «يظهر نظام الغابات المطيرة في أستراليا بشكل ...».",
+                "options": [
+                    "واسع",
+                    "كثيف",
+                    "محدود",
+                    "متصل"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «تعرف السافانا بنظام الحشائش ...».",
+                "options": [
+                    "الحارة",
+                    "الباردة",
+                    "المعتدلة",
+                    "الصحراوية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «تعرف التندرا بنظام الحشائش ...».",
+                "options": [
+                    "المعتدلة",
+                    "الباردة",
+                    "الحارة",
+                    "المدارية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «تعرف الإستبس والبراري بنظام الحشائش ...».",
+                "options": [
+                    "الحارة",
+                    "المعتدلة",
+                    "الباردة",
+                    "المدارية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «تنتشر السافانا في شمال قارة أمريكا ...».",
+                "options": [
+                    "الوسطى",
+                    "الشرقية",
+                    "الجنوبية",
+                    "الشمالية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «الغابات النفضية تسقط ... في فصل معين».",
+                "options": [
+                    "أوراقها",
+                    "أغصانها",
+                    "ثمارها",
+                    "جذورها"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «تمتد الغابات الصنوبرية فوق ... جبال روكي».",
+                "options": [
+                    "منحدرات",
+                    "قمم جليدية فقط",
+                    "أودية صحراوية",
+                    "سهول"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «فقدت غابات شيلي التنوع البيولوجي ل...».",
+                "options": [
+                    "للصخور",
+                    "لحيوانات",
+                    "للتربة فقط",
+                    "للمياه"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «يجب تحديد الدول التي حولت نظامًا بيئيًا طبيعيًا إلى نظام ... عليه الإنسان».",
+                "options": [
+                    "سيطر",
+                    "تخلى",
+                    "هجر",
+                    "أهمل"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «يضعف استثمار موارد نظام الحشائش ... بسبب قسوة المناخ».",
+                "options": [
+                    "الباردة",
+                    "المدارية",
+                    "الحارة",
+                    "المعتدلة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «يجب العمل للحد من المخاطر التي تتعرض لها الغابات تحقيقًا لأهداف التنمية ...».",
+                "options": [
+                    "المؤقتة",
+                    "المستدامة",
+                    "السريعة",
+                    "المحدودة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «تنتشر الغابات المدارية المطيرة في معظم جزر البحر ...».",
+                "options": [
+                    "الكاريبي",
+                    "المتوسط",
+                    "الأحمر",
+                    "الأسود"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «العلاقة بين الغابات الصنوبرية والصناعة أنها مصدر ... الخام».",
+                "options": [
+                    "للبترول",
+                    "للمواد",
+                    "للمعادن",
+                    "للطاقة الشمسية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «يعتمد الإنسان على الماشية في الغذاء و...».",
+                "options": [
+                    "النقل البحري",
+                    "الكساء",
+                    "البناء",
+                    "الطاقة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «يمتد نظام البحر المتوسط في أمريكا الجنوبية على طول ساحل و... شيلي».",
+                "options": [
+                    "جنوب",
+                    "وسط",
+                    "شرق",
+                    "شمال"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «يتركز نظام الغابات المطيرة في أمريكا الجنوبية خاصة في حوض نهر ...».",
+                "options": [
+                    "البارانا",
+                    "أورينوكو",
+                    "المسيسيبي",
+                    "الأمازون"
+                ],
+                "ans": 3
+            }
+        ]
+    },
+    {
+        "id": "true_false_4",
+        "title": "صح أم خطأ",
+        "type": "true_false",
+        "desc": "حدد صحة العبارات المتعلقة بـ نظم الغابات والحشائش في قارات العالم الجديد",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+        "questions": [
+            {
+                "q": "تتنوع النظم البيئية في قارات العالم الجديد تنوعًا كبيرًا.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تضم قارات العالم الجديد عددًا قليلًا من أنواع الغابات.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تضم أمريكا الجنوبية نحو نصف مساحة الغابات المدارية المطيرة في العالم.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تُعد غابات الأمازون أكبر غابة مطيرة في العالم.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تُعد غابات الأمازون الموطن الأصلي لأشجار الصبار.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تُعد غابات الأمازون الموطن الأصلي لأشجار المطاط.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تسمى غابات الأمازون رئة العالم لإنتاجها الأكسجين وامتصاصها ثاني أكسيد الكربون.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أشجار الغابات المدارية في أمريكا الشمالية أكثر كثافة من الأمازون.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يتركز نظام الغابات المطيرة في أستراليا في جزيرة نيو غينيا.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يوجد نظام غابات البحر المتوسط غرب ولاية نيويورك.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يوجد نظام غابات البحر المتوسط غرب ولاية كاليفورنيا.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يمتد نظام غابات البحر المتوسط على طول ساحل شيلي.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تدهورت غابات البحر المتوسط في شيلي بنسبة وصلت ٩٠٪ في بعض المناطق.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يتركز نظام غابات المتوسط في أستراليا في الشمال.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ينتشر نظام الغابات الموسمية في العروض المدارية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تتميز الغابات الموسمية بأمطار شتوية غزيرة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يمتد فصل الجفاف في الغابات الموسمية من ٤ إلى ٦ أشهر.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تتعرض بعض أشجار الغابات الموسمية للحرائق خلال موسم الجفاف.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تستحوذ أمريكا الجنوبية على نصف مساحة الغابات النفضية في العالم.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تستحوذ أمريكا الشمالية على نحو ٢٥٪ من الغابات النفضية في العالم.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تقلصت الغابات النفضية في أمريكا الشمالية بسبب الزراعة والرعي.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يظهر نظام الغابات النفضية في الساحل الجنوبي لشيلي.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "الغابات الصنوبرية تسمى أيضًا الغابات المخروطية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تنتشر الغابات الصنوبرية بكثافة في أستراليا.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تمتد الغابات الصنوبرية فوق منحدرات جبال روكي.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يُعد نظام الغابات الصنوبرية مصدرًا مهمًا للأخشاب.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يواجه نحو نصف أشجار الغابات الصنوبرية خطر الانقراض.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من أخطار تقلص الغابات الحرائق والزحف العمراني والزراعي.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تمثل غابات التندرا مناطق انتقالية بين الغابات المطيرة والصحاري.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تمثل السافانا مناطق انتقالية بين الغابات المدارية المطيرة والصحاري الحارة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تشغل السافانا مساحات واسعة في شمال أستراليا.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تنتشر السافانا في هضبة البرازيل.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أحد أشهر حيوانات السافانا بأستراليا الفيل.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من أشهر حيوانات السافانا بأستراليا تمساح المياه المالحة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "النمر الأمريكي من حيوانات السافانا في الأمريكتين.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يضم نظام الحشائش المعتدلة الإستبس والبراري.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "حشائش البراري خشنة يتخللها قليل من الأشجار.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تتميز البراري بكثافتها وطولها وانتشار الأشجار بها.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يمتد نظام الحشائش المعتدلة في العروض المعتدلة الوسطى.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يظهر في شمال كندا وألاسكا نظام الحشائش المعتدلة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يوجد نظام التندرا في شمال كندا وألاسكا.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يوجد نظام التندرا على جبال الأنديز الشاهقة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يملك ثور المسك أغلى صوف طبيعي في العالم.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "نسر الأنديز من أصغر الطيور في العالم.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تحول نظام الحشائش المعتدلة إلى نظام بيئي من صنع الإنسان إلى حد كبير.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تبرز منطقة البمباس في كندا والولايات المتحدة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ظل أثر الإنسان كبيرًا في نظام التندرا.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يعتمد سكان التندرا على صيد الأسماك والحيوانات البرية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يمتد نظام الحشائش المعتدلة في الأجزاء الداخلية السهلية من أستراليا.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تنتشر الغابات المطيرة في معظم جزر البحر الكاريبي.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            }
+        ]
+    },
+    {
+        "id": "genius_5",
+        "title": "تحدي العباقرة",
+        "type": "genius",
+        "desc": "تحدٍّ سريع للعباقرة: فكّر وفسّر وقارن في نظم الغابات والحشائش في قارات العالم الجديد",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path></svg>",
+        "questions": [
+            {
+                "q": "بم تفسر تنوع النظم البيئية في قارات العالم الجديد؟",
+                "options": [
+                    "تشابه مناخها",
+                    "صغر مساحتها",
+                    "قلة سكانها",
+                    "الموقع الجغرافي والامتداد الفلكي عبر دوائر عرض كثيرة وتنوع مظاهر السطح"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "بم تفسر أهمية الغابات كنظام بيئي؟",
+                "options": [
+                    "لقلة نباتاتها",
+                    "لأنها خالية من الحيوانات",
+                    "لتنوعها الحيوي الهائل ودورها في التوازن البيئي العالمي",
+                    "لأنها صحراوية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "بم تفسر تسمية غابات الأمازون «رئة العالم»؟",
+                "options": [
+                    "لأنها أكبر صحراء",
+                    "لأنها بها بحيرات",
+                    "لأنها تنتج البترول",
+                    "لأنها تسهم بشكل كبير في إنتاج الأكسجين وامتصاص ثاني أكسيد الكربون"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "قارن بين الغابات المدارية في أمريكا الجنوبية وأستراليا:",
+                "options": [
+                    "لا توجد في أستراليا مطلقًا",
+                    "في أمريكا الجنوبية تضم نصف مساحتها عالميًا، وفي أستراليا محدودة في نيو غينيا وشريط ساحلي",
+                    "متساوية في المساحة",
+                    "أستراليا أكبر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قارن بين الغابات المدارية في أمريكا الشمالية والأمازون:",
+                "options": [
+                    "أمريكا الشمالية أقل كثافة وأشجارها أقل ضخامة وتشابكًا",
+                    "متطابقتان",
+                    "الأمازون أقل كثافة",
+                    "أمريكا الشمالية أكثر كثافة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما مناطق انتشار غابات البحر المتوسط في العالم الجديد؟",
+                "options": [
+                    "شرق البرازيل",
+                    "غرب كاليفورنيا وساحل ووسط شيلي وجنوب وجنوب غرب أستراليا",
+                    "نيو غينيا",
+                    "شمال كندا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما نتائج تدهور غابات البحر المتوسط في شيلي؟",
+                "options": [
+                    "فقدان التنوع البيولوجي للحيوانات وانقراض بعض الأنواع",
+                    "زيادة الحيوانات",
+                    "زيادة المساحة",
+                    "ازدهار السياحة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما خصائص نظام الغابات الموسمية؟",
+                "options": [
+                    "أمطار شتوية",
+                    "عروض مدارية بأمطار صيفية غزيرة وجفاف ٤-٦ أشهر وتتعرض أشجاره للحرائق",
+                    "أمطار طوال العام",
+                    "مناخ قطبي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "بم تفسر تعرض أشجار الغابات الموسمية للحرائق؟",
+                "options": [
+                    "بسبب موسم الجفاف الذي يمتد ٤-٦ أشهر",
+                    "لكثرة الأمطار",
+                    "لكثرة الأنهار",
+                    "لانخفاض الحرارة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما مناطق انتشار الغابات النفضية في العالم الجديد؟",
+                "options": [
+                    "وسط أستراليا",
+                    "شمال البرازيل",
+                    "ألاسكا",
+                    "شرق الولايات المتحدة وكندا والساحل الجنوبي لشيلي وجنوب شرق أستراليا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "بم تفسر تقلص مساحة الغابات النفضية في أمريكا الشمالية؟",
+                "options": [
+                    "بسبب الزراعة والرعي",
+                    "بسبب الجليد",
+                    "بسبب البراكين",
+                    "بسبب الأعاصير"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما العلاقة بين نظام الغابات الصنوبرية والصناعة؟",
+                "options": [
+                    "مصدر مهم للمواد الخام خاصة الأخشاب للبناء والصناعات الخشبية",
+                    "مصدر البترول",
+                    "لا علاقة",
+                    "مصدر المطاط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "بم تفسر تعرض نظم الغابات في العالم الجديد لتقلص مساحاتها؟",
+                "options": [
+                    "بسبب حرائق الغابات والزحف العمراني والزراعي",
+                    "انخفاض السكان",
+                    "كثرة الحيوانات",
+                    "زيادة الأمطار"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اقترح إجراءات لحماية نظم الغابات:",
+                "options": [
+                    "منع القطع الجائر وإعادة التشجير ومكافحة الحرائق والحد من الزحف العمراني",
+                    "زيادة القطع",
+                    "التوسع العمراني",
+                    "حرق الغابات"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما المقصود بنظام السافانا؟",
+                "options": [
+                    "حشائش حارة تمثل مناطق انتقالية بين الغابات المدارية المطيرة والصحاري الحارة",
+                    "صحاري جليدية",
+                    "غابات صنوبرية",
+                    "حشائش باردة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قارن بين حيوانات السافانا في الأمريكتين وأستراليا:",
+                "options": [
+                    "الأمريكتان: النمر الأمريكي، أستراليا: تمساح المياه المالحة",
+                    "الأمريكتان: ثور المسك",
+                    "أستراليا: النمر الأمريكي",
+                    "كلاهما الكنغر"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قارن بين حشائش الإستبس والبراري:",
+                "options": [
+                    "الإستبس خشنة قليلة الأشجار، والبراري أكثف وأطول وبها أشجار",
+                    "متطابقتان",
+                    "البراري خشنة",
+                    "الإستبس أطول"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قارن بين الحشائش المعتدلة والباردة في أمريكا الشمالية:",
+                "options": [
+                    "المعتدلة في ألاسكا",
+                    "المعتدلة في السهول الوسطى، والباردة (التندرا) في شمال كندا وألاسكا",
+                    "الباردة في السهول الوسطى",
+                    "كلاهما في المكسيك"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما أشهر حيوانات التندرا؟",
+                "options": [
+                    "الكنغر",
+                    "تمساح المياه المالحة",
+                    "ثور المسك ونسر الأنديز",
+                    "النمر الأمريكي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "بم تفسر تحول نظام الحشائش المعتدلة إلى نظام من صنع الإنسان؟",
+                "options": [
+                    "التصحر الطبيعي",
+                    "ارتفاع البحر",
+                    "تزايد الاستيطان البشري واستبدال الحشائش بالمراعي وزراعة الحبوب",
+                    "البراكين"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما الدول التي حولت نظامًا بيئيًا طبيعيًا إلى نظام سيطر عليه الإنسان؟",
+                "options": [
+                    "كندا وألاسكا",
+                    "شيلي فقط",
+                    "نيو غينيا",
+                    "الأرجنتين وأوروجواي (البمباس)"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "بم تفسر ضعف استثمار موارد نظام الحشائش الباردة؟",
+                "options": [
+                    "قسوة المناخ وقصر فصل النمو",
+                    "وفرة الغابات",
+                    "كثافة السكان",
+                    "ارتفاع الحرارة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كيف يعيش سكان التندرا؟",
+                "options": [
+                    "التجارة الدولية",
+                    "الزراعة الكثيفة",
+                    "الصناعة الثقيلة",
+                    "في مراكز دائمة بالسواحل وبجوار الأنهار والبحيرات ويعتمدون على الصيد وجمع الثمار"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "صوّب الخطأ: «تُعد غابات الأمازون الموطن الأصلي لأشجار الصبار».",
+                "options": [
+                    "البلوط",
+                    "المطاط",
+                    "الصنوبر",
+                    "النخيل"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صوّب الخطأ: «تمثل غابات التندرا مناطق انتقالية بين الغابات المطيرة والصحاري».",
+                "options": [
+                    "الصنوبرية",
+                    "السافانا",
+                    "الإستبس",
+                    "البراري"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صوّب الخطأ: «تستحوذ أمريكا الجنوبية على نصف مساحة الغابات النفضية».",
+                "options": [
+                    "الغابات الصنوبرية",
+                    "غابات المتوسط",
+                    "الغابات المدارية المطيرة",
+                    "الغابات الموسمية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "صوّب الخطأ: «يوجد نظام غابات البحر المتوسط غرب ولاية نيويورك».",
+                "options": [
+                    "كاليفورنيا",
+                    "تكساس",
+                    "فلوريدا",
+                    "ألاسكا"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "صوّب الخطأ: «أحد أشهر حيوانات السافانا بأستراليا الفيل».",
+                "options": [
+                    "ثور المسك",
+                    "تمساح المياه المالحة",
+                    "الكنغر",
+                    "النمر الأمريكي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صوّب الخطأ: «يظهر في شمال كندا وألاسكا نظام الحشائش المعتدلة».",
+                "options": [
+                    "السافانا",
+                    "البراري",
+                    "الباردة (التندرا)",
+                    "الحارة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من أكون؟ «أكبر غابة مطيرة في العالم وموطن المطاط»",
+                "options": [
+                    "غابات شيلي",
+                    "غابات الأمازون",
+                    "غابات الكونغو",
+                    "غابات كاليفورنيا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من أكون؟ «حيوان يملك أغلى صوف طبيعي في العالم»",
+                "options": [
+                    "الكنغر",
+                    "ثور المسك",
+                    "النمر الأمريكي",
+                    "اللاما"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من أكون؟ «من أكبر الزواحف في العالم ويعيش في سافانا أستراليا»",
+                "options": [
+                    "الثعبان",
+                    "السلحفاة",
+                    "السحلية",
+                    "تمساح المياه المالحة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من أكون؟ «منطقة في الأرجنتين وأوروجواي تمثل أوضح تدخل بشري»",
+                "options": [
+                    "بتاجونيا",
+                    "البمباس",
+                    "التندرا",
+                    "الأمازون"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من أكون؟ «غابات تسمى المخروطية ومصدر للأخشاب»",
+                "options": [
+                    "الغابات النفضية",
+                    "الغابات الموسمية",
+                    "الغابات المطيرة",
+                    "الغابات الصنوبرية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "استنتج نظام الغابات غير الموجود تقريبًا في أستراليا:",
+                "options": [
+                    "الغابات الصنوبرية",
+                    "الغابات النفضية",
+                    "الغابات المطيرة",
+                    "غابات المتوسط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "استنتج نظام الحشائش غير الموجود في أستراليا:",
+                "options": [
+                    "الإستبس",
+                    "السافانا",
+                    "التندرا",
+                    "البراري"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "بم تفسر عدم وجود التندرا في أستراليا؟",
+                "options": [
+                    "لكثرة الجبال",
+                    "لأنها لا تمتد إلى العروض القطبية الباردة",
+                    "لكثرة الغابات",
+                    "لكثرة السكان"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "استبعد الغريب: (السافانا - الإستبس - البراري - الصنوبرية)",
+                "options": [
+                    "السافانا",
+                    "البراري",
+                    "الصنوبرية",
+                    "الإستبس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "استبعد الغريب: (المطيرة - الموسمية - التندرا - النفضية)",
+                "options": [
+                    "الموسمية",
+                    "التندرا",
+                    "النفضية",
+                    "المطيرة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "استبعد الغريب من حيوانات السافانا: (النمر الأمريكي - تمساح المياه المالحة - ثور المسك)",
+                "options": [
+                    "النمر الأمريكي",
+                    "لا يوجد غريب",
+                    "تمساح المياه المالحة",
+                    "ثور المسك"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "رتب نظم الحشائش من الاستواء نحو القطب:",
+                "options": [
+                    "البراري ثم التندرا ثم السافانا",
+                    "السافانا ثم التندرا ثم البراري",
+                    "السافانا ثم الإستبس والبراري ثم التندرا",
+                    "التندرا ثم السافانا ثم البراري"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما دور الغابات والحشائش في الحفاظ على التوازن البيئي؟",
+                "options": [
+                    "تدمير التربة",
+                    "رفع حرارة الأرض",
+                    "زيادة التلوث",
+                    "إنتاج الأكسجين وامتصاص الكربون وتوفير موطن للكائنات الحية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "اقترح حلولًا للحد من تأثير الإنسان على الحشائش المعتدلة:",
+                "options": [
+                    "التوسع العمراني",
+                    "تنظيم الرعي والزراعة وحماية مناطق طبيعية منها",
+                    "إزالة الحشائش كلها",
+                    "زيادة الرعي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما مناطق انتشار الغابات الصنوبرية في الأمريكتين؟",
+                "options": [
+                    "شيلي الوسطى",
+                    "الكاريبي",
+                    "البرازيل",
+                    "شمال وشمال غرب أمريكا الشمالية ومنحدرات روكي، وأقصى جنوب أمريكا الجنوبية على الأنديز"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما الخطر الذي يواجه ثلث أشجار الغابات الصنوبرية؟",
+                "options": [
+                    "خطر التدهور والانقراض",
+                    "خطر الفيضان",
+                    "خطر الجفاف الدائم",
+                    "لا خطر"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما مناطق انتشار السافانا في العالم الجديد؟",
+                "options": [
+                    "جنوب أمريكا الشمالية وشمال أمريكا الجنوبية وهضبة البرازيل وشمال أستراليا",
+                    "شمال كندا",
+                    "نيوزيلندا",
+                    "جنوب شيلي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما مناطق انتشار الغابات الموسمية في العالم الجديد؟",
+                "options": [
+                    "ألاسكا",
+                    "أقصى جنوب أمريكا الشمالية وشرق البرازيل ونيو غينيا وشمال أستراليا",
+                    "كاليفورنيا",
+                    "جنوب شيلي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من أكون؟ «طائر من أكبر الطيور في العالم يعيش في التندرا»",
+                "options": [
+                    "النعام",
+                    "نسر الأنديز",
+                    "البطريق",
+                    "الصقر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من أكون؟ «حيوان من أشهر حيوانات السافانا في الأمريكتين»",
+                "options": [
+                    "ثور المسك",
+                    "النمر الأمريكي",
+                    "الكنغر",
+                    "الدب القطبي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من أكون؟ «جزيرة يتركز فيها نظام الغابات المطيرة بأستراليا»",
+                "options": [
+                    "نيوزيلندا",
+                    "تسمانيا",
+                    "نيو غينيا",
+                    "جاوة"
+                ],
+                "ans": 2
+            }
+        ]
+    },
+    {
+        "id": "map_6",
+        "title": "تحدي الخرائط والصور",
+        "type": "map",
+        "desc": "اكتشف المخفي على خرائط وصور الكتاب في نظم الغابات والحشائش في قارات العالم الجديد",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6\"></polygon><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"18\"></line><line x1=\"16\" y1=\"6\" x2=\"16\" y2=\"22\"></line></svg>",
+        "questions": [
+            {
+                "q": "استعن بمفتاح الخريطة: ما النظام الذي يغطي حوض الأمازون باللون الأخضر الداكن؟",
+                "options": [
+                    "الغابات النفضية",
+                    "الغابات الموسمية",
+                    "الغابات المدارية المطيرة",
+                    "الغابات الصنوبرية"
+                ],
+                "ans": 2,
+                "img": "images/g3u3l1_forestam.jpg",
+                "masks": []
+            },
+            {
+                "q": "استعن بمفتاح الخريطة: ما النظام الممثل باللون البرتقالي في شمال أمريكا الشمالية؟",
+                "options": [
+                    "غابات البحر المتوسط",
+                    "الغابات الصنوبرية",
+                    "الغابات النفضية",
+                    "الغابات الموسمية"
+                ],
+                "ans": 1,
+                "img": "images/g3u3l1_forestam.jpg",
+                "masks": []
+            },
+            {
+                "q": "استعن بمفتاح الخريطة: ما النظام الممثل باللون الأصفر في شرق الولايات المتحدة؟",
+                "options": [
+                    "الغابات المدارية",
+                    "الغابات الصنوبرية",
+                    "الغابات الموسمية",
+                    "الغابات النفضية"
+                ],
+                "ans": 3,
+                "img": "images/g3u3l1_forestam.jpg",
+                "masks": []
+            },
+            {
+                "q": "يظهر نظام غابات البحر المتوسط باللون الأحمر في أمريكا الشمالية غرب ولاية:",
+                "options": [
+                    "كاليفورنيا",
+                    "فلوريدا",
+                    "تكساس",
+                    "نيويورك"
+                ],
+                "ans": 0,
+                "img": "images/g3u3l1_forestam.jpg",
+                "masks": []
+            },
+            {
+                "q": "استعن بمفتاح الخريطة: ما النظام الممثل باللون الأحمر في جنوب أستراليا؟",
+                "options": [
+                    "الغابات النفضية",
+                    "الغابات المدارية المطيرة",
+                    "الغابات الموسمية",
+                    "غابات البحر المتوسط"
+                ],
+                "ans": 3,
+                "img": "images/g3u3l1_forestau.jpg",
+                "masks": []
+            },
+            {
+                "q": "يتركز نظام الغابات المدارية المطيرة في أستراليا كما توضح الخريطة في جزيرة:",
+                "options": [
+                    "نيوزيلندا",
+                    "نيو غينيا",
+                    "تسمانيا",
+                    "مدغشقر"
+                ],
+                "ans": 1,
+                "img": "images/g3u3l1_forestau.jpg",
+                "masks": []
+            },
+            {
+                "q": "النظام الذي لا يظهر على خريطة أستراليا:",
+                "options": [
+                    "الغابات النفضية",
+                    "الغابات الصنوبرية",
+                    "الغابات الموسمية",
+                    "غابات البحر المتوسط"
+                ],
+                "ans": 1,
+                "img": "images/g3u3l1_forestau.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة أكبر غابة مطيرة في العالم وتسمى رئة العالم، ما اسمها؟",
+                "options": [
+                    "غابات الأمازون",
+                    "غابات الكونغو",
+                    "غابات تسمانيا",
+                    "غابات كاليفورنيا"
+                ],
+                "ans": 0,
+                "img": "images/g3u3l1_amazon.jpg",
+                "masks": []
+            },
+            {
+                "q": "استعن بمفتاح الخريطة: ما النظام الممثل باللون الأزرق في شمال كندا وألاسكا؟",
+                "options": [
+                    "حشائش السافانا",
+                    "حشائش الإستبس",
+                    "الغابات الصنوبرية",
+                    "حشائش التندرا"
+                ],
+                "ans": 3,
+                "img": "images/g3u3l1_grassam.jpg",
+                "masks": []
+            },
+            {
+                "q": "استعن بمفتاح الخريطة: ما النظام الممثل باللون الأخضر في السهول الوسطى؟",
+                "options": [
+                    "الغابات النفضية",
+                    "حشائش التندرا",
+                    "حشائش الإستبس (البراري)",
+                    "حشائش السافانا"
+                ],
+                "ans": 2,
+                "img": "images/g3u3l1_grassam.jpg",
+                "masks": []
+            },
+            {
+                "q": "استعن بمفتاح الخريطة: ما النظام الممثل باللون الأحمر في هضبة البرازيل؟",
+                "options": [
+                    "حشائش السافانا",
+                    "حشائش الإستبس",
+                    "حشائش التندرا",
+                    "الغابات الموسمية"
+                ],
+                "ans": 0,
+                "img": "images/g3u3l1_grassam.jpg",
+                "masks": []
+            },
+            {
+                "q": "يشغل نظام السافانا مساحات واسعة في أستراليا كما توضح الخريطة في:",
+                "options": [
+                    "نيوزيلندا",
+                    "جزيرة تسمانيا",
+                    "جنوب القارة",
+                    "شمال القارة"
+                ],
+                "ans": 3,
+                "img": "images/g3u3l1_grassau.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة من أشهر حيوانات السافانا في الأمريكتين، ما اسمه؟",
+                "options": [
+                    "ثور المسك",
+                    "النمر الأمريكي",
+                    "تمساح المياه المالحة",
+                    "الكنغر"
+                ],
+                "ans": 1,
+                "img": "images/g3u3l1_jaguar.jpg",
+                "masks": []
+            }
+        ]
+    }
+];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        if (teamMode) { onTeamAnswer(isCorrect); }
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        if (teamMode) { teamFeedbackText(isCorrect, title); } else { title.style.fontSize = ''; }
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        document.getElementById('team-board').classList.remove('show'); teamMode = false;
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+        updateTeamBoard();
+    }
+
+    function gameComplete() {
+        if (teamMode) { teamGameComplete(); return; }
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <div class="share-box">
+                    <h4>📲 أرسل نتيجتك إلى الأستاذ أحمد نورالدين</h4>
+                    <input type="text" id="student-name-input" class="share-name-input" placeholder="اكتب اسمك هنا أولًا">
+                    <div id="share-warning" class="share-warning">من فضلك اكتب اسمك أولًا قبل الإرسال ✋</div>
+                    <div>
+                        <button class="btn btn-share" onclick="sendResultToTeacher(${score}, ${currentQuestions.length})">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/></svg>
+                            إرسال النتيجة عبر واتساب
+                        </button>
+                    </div>
+                </div>
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button>
+            </div>
+        `;
+    }
+
+    function sendResultToTeacher(score, total) {
+        const nameInput = document.getElementById('student-name-input');
+        const warning = document.getElementById('share-warning');
+        const name = nameInput.value.trim();
+        if (!name) {
+            warning.style.display = 'block';
+            nameInput.classList.add('shake');
+            nameInput.focus();
+            setTimeout(() => nameInput.classList.remove('shake'), 500);
+            return;
+        }
+        warning.style.display = 'none';
+        const gameTitle = currentGame ? currentGame.title : '';
+        const message =
+            `📚 نتيجة طالب - ${LESSON_NAME}\n` +
+            `👤 اسم الطالب: ${name}\n` +
+            `🎮 اللعبة: ${gameTitle}\n` +
+            `✅ النتيجة: ${score} من ${total}\n` +
+            `⭐ نسبة النجاح: ${Math.round((score/total)*100)}%`;
+        const url = `https://wa.me/201022364812?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    function beginGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]).slice(0, QUESTIONS_PER_ROUND);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        } else if (currentGame.type === 'map') {
+            renderMap(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #0e7490)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.95 + Math.random() * 0.65; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+
+    // 6. تحدي الخرائط والصور
+    function renderMap(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+
+        const stage = document.createElement('div');
+        stage.className = 'map-stage';
+        const wrap = document.createElement('div');
+        wrap.className = 'map-wrap';
+        const img = document.createElement('img');
+        img.src = qData.img;
+        img.alt = 'خريطة أو صورة من الكتاب المدرسي';
+        wrap.appendChild(img);
+        const masks = [];
+        (qData.masks || []).forEach(m => {
+            const d = document.createElement('div');
+            d.className = 'map-mask';
+            d.style.left = m[0] + '%'; d.style.top = m[1] + '%';
+            d.style.width = m[2] + '%'; d.style.height = m[3] + '%';
+            d.textContent = '؟';
+            wrap.appendChild(d); masks.push(d);
+        });
+        stage.appendChild(wrap);
+        wrap.onclick = () => stage.classList.toggle('zoomed');
+        const hint = document.createElement('div');
+        hint.className = 'map-hint';
+        hint.textContent = (masks.length ? '💡 الإجابة مخفية تحت المربع البرتقالي (؟) • ' : '💡 ') + 'اضغط على الصورة لتكبيرها';
+        stage.appendChild(hint);
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'map-options';
+        let isAnswered = false;
+        const btns = [];
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                const ok = opt === correctText;
+                masks.forEach(d => d.classList.add('revealed'));
+                btns.forEach(b => { if (b.innerText === correctText) b.classList.add('ok'); });
+                if (!ok) {
+                    btn.classList.add('bad');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                }
+                setTimeout(() => showFeedback(ok, () => { qIndex++; renderNextState(); }), 1100);
+            };
+            btns.push(btn);
+            optContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(stage);
+        container.appendChild(optContainer);
+    }
+
+
+    // --- طريقة اللعب: فردي أو منافسة بين فريقين ---
+    const QUESTIONS_PER_ROUND = 20;
+    let teamMode = false;
+    let teamNames = ['الفريق الأول', 'الفريق الثاني'];
+    let teamScores = [0, 0];
+    let pendingGame = null;
+
+    function startGame(gameData) {
+        initAudio();
+        pendingGame = gameData;
+        document.getElementById('mode-game-title').textContent = gameData.title;
+        document.getElementById('team-setup').classList.remove('show');
+        document.getElementById('mode-overlay').classList.add('active');
+    }
+    function closeModePicker() { document.getElementById('mode-overlay').classList.remove('active'); }
+    function chooseSolo() {
+        teamMode = false; closeModePicker();
+        document.getElementById('team-board').classList.remove('show');
+        beginGame(pendingGame);
+    }
+    function chooseTeams() {
+        document.getElementById('team-setup').classList.add('show');
+        setTimeout(() => document.getElementById('team-a').select(), 50);
+    }
+    function startTeams() {
+        const a = document.getElementById('team-a').value.trim() || 'الفريق الأول';
+        const b = document.getElementById('team-b').value.trim() || 'الفريق الثاني';
+        teamNames = [a, b === a ? b + ' (٢)' : b];
+        teamScores = [0, 0];
+        teamMode = true; closeModePicker();
+        document.getElementById('team-name-0').textContent = teamNames[0];
+        document.getElementById('team-name-1').textContent = teamNames[1];
+        document.getElementById('team-board').classList.add('show');
+        beginGame(pendingGame);
+        updateTeamBoard();
+    }
+    function currentTeam() { return qIndex % 2; }
+    function updateTeamBoard() {
+        if (!teamMode) return;
+        for (let i = 0; i < 2; i++) {
+            document.getElementById('team-score-' + i).textContent = teamScores[i];
+            document.getElementById('team-card-' + i).classList.toggle('active', i === currentTeam() && qIndex < currentQuestions.length);
+        }
+    }
+    function onTeamAnswer(isCorrect) {
+        if (isCorrect) teamScores[currentTeam()]++;
+        updateTeamBoard();
+    }
+    function teamFeedbackText(isCorrect, titleEl) {
+        const t = teamNames[currentTeam()];
+        titleEl.textContent = isCorrect ? ('نقطة لـ ' + t + '! 🎉') : ('إجابة خاطئة يا ' + t);
+        titleEl.style.fontSize = '2rem';
+    }
+    function teamGameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect(); setTimeout(playCorrect, 300);
+        document.getElementById('team-card-0').classList.remove('active');
+        document.getElementById('team-card-1').classList.remove('active');
+        let banner;
+        if (teamScores[0] === teamScores[1]) banner = '🤝 تعادل! أداء رائع من الفريقين';
+        else banner = '🏆 الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]);
+        let wrongHTML = '';
+        if (wrongAnswers.length > 0) {
+            wrongHTML = '<div style="margin-top: 18px; text-align: right; background: #f8fafc; padding: 16px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 300px; overflow-y: auto;" class="errors-list"><h3 style="color: var(--danger); margin-bottom: 12px; text-align: center; font-size: 1.25rem;">مراجعة الأسئلة التي تمت الإجابة عنها خطأ 📝</h3><ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">';
+            wrongAnswers.forEach((item, i) => {
+                wrongHTML += '<li style="background: white; padding: 12px; border-radius: 10px; border-right: 5px solid var(--danger);"><div style="font-weight: bold; color: var(--primary); margin-bottom: 6px;">' + (i + 1) + '. ' + item.question + '</div><div style="color: var(--success); font-weight: bold;">الإجابة الصحيحة: ' + item.correct + '</div></li>';
+            });
+            wrongHTML += '</ul></div>';
+        }
+        gc.innerHTML = '<div style="text-align:center; padding: 30px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">'
+            + '<h2 style="color: var(--primary); font-size: 2rem; font-weight: 900;">انتهت المنافسة!</h2>'
+            + '<div class="winner-box"><h3>' + banner + '</h3><div class="final-scores"><div>' + teamNames[0] + ': ' + teamScores[0] + '</div><div>' + teamNames[1] + ': ' + teamScores[1] + '</div></div></div>'
+            + wrongHTML
+            + '<div class="share-box"><h4>📲 أرسل نتيجة المنافسة إلى الأستاذ أحمد نورالدين</h4><button class="btn btn-share" onclick="sendTeamResult()">إرسال النتيجة عبر واتساب</button></div>'
+            + '<div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top: 18px;">'
+            + '<button class="btn" style="padding:14px 26px;" onclick="startTeamsAgain()">🔄 منافسة جديدة بأسئلة مختلفة</button>'
+            + '<button class="btn back-btn" style="padding:14px 26px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button></div></div>';
+        triggerConfetti();
+    }
+    function startTeamsAgain() { teamScores = [0, 0]; beginGame(pendingGame); updateTeamBoard(); }
+    function sendTeamResult() {
+        const gameTitle = currentGame ? currentGame.title : '';
+        let res = teamScores[0] === teamScores[1] ? 'تعادل' : ('الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]));
+        const message = '🏆 نتيجة منافسة - ' + LESSON_NAME + '\n🎮 اللعبة: ' + gameTitle + '\n'
+            + '🔵 ' + teamNames[0] + ': ' + teamScores[0] + '\n🟠 ' + teamNames[1] + ': ' + teamScores[1] + '\n✅ ' + res;
+        window.open('https://wa.me/201022364812?text=' + encodeURIComponent(message), '_blank');
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>
