@@ -1,0 +1,4290 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>درس مظاهر سطح مصر - الصف الخامس الابتدائي</title>
+    <!-- استدعاء خط احترافي -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #134e4a;      
+            --primary-light: #0d9488; 
+            --secondary: #0e7490;    
+            --success: #10b981;      
+            --danger: #ef4444;       
+            --warning: #f59e0b;      
+            --dark: #1e293b;         
+            --light: #f8fafc;
+            --card-bg: #ffffff;
+        }
+
+        * {
+            box-sizing: border-box;
+            font-family: 'Cairo', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: #ecfeff;
+            background-image: radial-gradient(#a5d4ce 1.5px, transparent 1.5px);
+            background-size: 25px 25px;
+            color: var(--dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+
+        .hidden { display: none !important; }
+        
+        /* --- الهيدر الرئيسي --- */
+        .header-main {
+            background: linear-gradient(135deg, #042f2e, var(--primary), var(--secondary));
+            color: white;
+            padding: 30px 20px 90px 20px; 
+            text-align: center;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .title-line1 {
+            font-size: clamp(1.1rem, 4vw, 1.5rem); 
+            font-weight: 700;
+            color: #ccfbf1;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .title-line2 {
+            font-size: clamp(1.4rem, 5.5vw, 2.6rem); 
+            font-weight: 900;
+            background: linear-gradient(to right, #2dd4bf, #0f766e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.5));
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        .header-main h2 { font-size: clamp(1rem, 3vw, 1.3rem); font-weight: 600; color: #f0fdfa; margin-bottom: 8px; text-shadow: 1px 1px 2px rgba(0,0,0,0.3);}
+        .header-main p { font-size: clamp(0.9rem, 2.5vw, 1.1rem); font-weight: 600; background: rgba(0,0,0,0.3); display: inline-block; padding: 6px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.15); box-shadow: 0 4px 6px rgba(0,0,0,0.1);}
+
+        .header-wave {
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: auto;
+            z-index: 1;
+        }
+
+        /* --- الأزرار --- */
+        .btn {
+            background: linear-gradient(to bottom, var(--primary-light), var(--primary));
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            border-bottom: 3px solid rgba(0,0,0,0.3);
+        }
+        .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 12px rgba(0,0,0,0.2); }
+        .btn:active { transform: translateY(2px); border-bottom: 0px; margin-top: 3px; }
+        .btn-correct { filter: brightness(1.2); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+        .btn-wrong { filter: brightness(0.8); pointer-events: none; border-bottom-width: 0; transform: translateY(2px);}
+
+        /* --- الشاشة الرئيسية --- */
+        #home-screen {
+            flex: 1;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .grid-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            width: 100%;
+            max-width: 1000px;
+            padding-bottom: 80px;
+        }
+
+        .menu-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05), 0 4px 6px -2px rgba(0,0,0,0.025);
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        .menu-card::before {
+            content: ""; position: absolute; top: 0; left: 0; right: 0; height: 6px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0; transition: opacity 0.3s;
+        }
+        .menu-card:hover { transform: translateY(-8px); box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1); border-color: rgba(34, 197, 94, 0.25); }
+        .menu-card:hover::before { opacity: 1; }
+        
+        .menu-card .icon-container {
+            width: 80px; height: 80px;
+            margin: 0 auto 15px auto;
+            background: linear-gradient(135deg, #ccfbf1, #99f6e4);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: inset 0 3px 6px rgba(255,255,255,0.8), 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .menu-card .icon-container svg {
+            width: 40px; height: 40px; stroke: #134e4a; fill: none;
+            stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+        }
+        .menu-card:hover .icon-container { transform: scale(1.1) rotate(10deg); }
+        .menu-card h3 { font-size: 1.4rem; color: var(--dark); font-weight: 800; margin-bottom: 8px;}
+        .menu-card p { font-size: 1rem; color: #64748b; font-weight: 600;}
+
+        /* --- شاشة اللعب --- */
+        #game-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .game-nav {
+            background: white;
+            padding: 15px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            margin-bottom: 20px;
+            font-weight: bold;
+            font-size: clamp(0.9rem, 3vw, 1.2rem);
+        }
+        .back-btn { background: #e2e8f0; color: var(--dark); border-bottom: 3px solid #cbd5e1; padding: 8px 15px;}
+        #game-progress { background: #0d9488; color: white; padding: 6px 15px; border-radius: 20px;}
+        
+        .game-container {
+            flex: 1;
+            padding: 0 20px 40px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px 25px;
+            border-radius: 16px;
+            text-align: center;
+            font-size: clamp(1.2rem, 4vw, 1.6rem);
+            font-weight: 800;
+            color: #134e4a;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+            border-right: 8px solid #0e7490;
+            line-height: 1.6;
+        }
+
+        .shake { animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake {
+            10%, 90% { transform: translate3d(-2px, 0, 0); }
+            20%, 80% { transform: translate3d(4px, 0, 0); }
+            30%, 50%, 70% { transform: translate3d(-6px, 0, 0); }
+            40%, 60% { transform: translate3d(6px, 0, 0); }
+        }
+
+        /* MCQ Style */
+        .options-grid { display: flex; flex-direction: column; gap: 15px; }
+        .options-grid .btn { padding: 18px; font-size: clamp(1.1rem, 3.5vw, 1.4rem); text-align: right; justify-content: flex-start; border-radius: 12px;}
+
+        /* True/False Style */
+        .tf-grid { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+
+        /* Bubbles Style */
+        .bubbles-area {
+            position: relative; height: 400px;
+            background: linear-gradient(to bottom, #042f2e, #134e4a);
+            border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+        .bubble {
+            position: absolute;
+            background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.9), rgba(224,231,255,0.9));
+            color: #134e4a;
+            border: 2px solid #ffffff;
+            padding: 10px 5px;
+            border-radius: 30px;
+            font-weight: 800; font-size: clamp(0.85rem, 2vw, 1.05rem);
+            box-shadow: 0 10px 15px rgba(0,0,0,0.2), inset -4px -4px 10px rgba(0,0,0,0.1);
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            width: 22%;
+            transition: transform 0.2s, background 0.2s;
+            z-index: 5;
+        }
+        .bubble:hover { transform: scale(1.05); }
+        .bubble::after {
+            content: ''; position: absolute; top: 10%; left: 15%;
+            width: 20%; height: 20%; background: rgba(255,255,255,0.8);
+            border-radius: 50%; filter: blur(2px);
+        }
+
+        /* Shooting Style */
+        .shooting-area {
+            position: relative; height: 400px; background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><rect fill="%23e0fbfc" width="100%" height="100%"/><circle fill="%23bae6fd" cx="20%" cy="30%" r="50"/><circle fill="%23bae6fd" cx="80%" cy="60%" r="70"/><circle fill="%23bae6fd" cx="50%" cy="80%" r="40"/></svg>') no-repeat center center;
+            background-size: cover; border-radius: 16px; overflow: hidden;
+            border: 4px solid #0d9488; margin-top: 10px; box-shadow: inset 0 0 20px rgba(0,0,0,0.1);
+        }
+        .target-bird {
+            position: absolute; background: white; color: var(--dark);
+            padding: 10px 20px; border-radius: 30px; font-weight: 800; font-size: clamp(0.95rem, 3vw, 1.15rem);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.15); cursor: crosshair;
+            border: 3px solid var(--warning); white-space: nowrap; transition: background 0.2s;
+            display: flex; align-items: center; gap: 8px;
+        }
+        .target-bird:hover { transform: scale(1.05); background: #f0fdfa; }
+
+        /* Genius Challenge Style */
+        .genius-wrap {
+            background: linear-gradient(135deg, #042f2e, #134e4a, #0f766e);
+            border-radius: 16px; padding: 20px; margin-top: 10px;
+            border: 4px solid #2dd4bf; box-shadow: inset 0 0 25px rgba(0,0,0,0.4), 0 10px 20px rgba(21,128,61,0.35);
+        }
+        .genius-timer-track {
+            width: 100%; height: 14px; background: rgba(0,0,0,0.35);
+            border-radius: 10px; overflow: hidden; margin-bottom: 18px;
+            border: 2px solid rgba(255,255,255,0.2);
+        }
+        .genius-timer-bar {
+            height: 100%; width: 100%;
+            background: linear-gradient(to right, #2dd4bf, #0d9488, #ef4444);
+            border-radius: 10px;
+            transition: width 0.1s linear;
+        }
+        .genius-options { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        @media (max-width: 600px) { .genius-options { grid-template-columns: 1fr; } }
+        .genius-options .btn {
+            padding: 16px 10px; font-size: clamp(1rem, 3vw, 1.25rem);
+            background: linear-gradient(to bottom, #14b8a6, #0f766e);
+            border-bottom: 3px solid #134e4a; border-radius: 14px; min-height: 70px;
+        }
+        .genius-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(74, 222, 128, 0.15); color: #2dd4bf;
+            font-weight: 800; padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(253,224,71,0.4); margin-bottom: 12px; font-size: 0.95rem;
+        }
+
+        /* Result Share (WhatsApp) */
+        .share-box {
+            margin-top: 25px; background: #f0fdfa; border: 2px solid #99f6e4;
+            border-radius: 16px; padding: 20px; text-align: center;
+        }
+        .share-box h4 { color: #115e59; font-size: 1.2rem; margin-bottom: 12px; font-weight: 800;}
+        .share-name-input {
+            width: 100%; max-width: 320px; padding: 12px 16px; border-radius: 12px;
+            border: 2px solid #5eead4; font-size: 1.05rem; text-align: center;
+            font-family: 'Cairo', sans-serif; font-weight: 700; margin-bottom: 12px;
+            color: var(--dark);
+        }
+        .share-name-input:focus { outline: none; border-color: #0d9488; }
+        .btn-share {
+            background: linear-gradient(to bottom, #25d366, #1da851);
+            border-bottom-color: #128c3e; display: inline-flex; gap: 10px;
+        }
+        .share-warning { color: var(--danger); font-weight: 700; font-size: 0.9rem; margin-top: 8px; display: none; }
+
+        /* Modal Overlay */
+        .overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(4px);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+        }
+        .overlay.active { opacity: 1; pointer-events: all; }
+        .modal {
+            background: white; padding: 40px; border-radius: 25px;
+            text-align: center; max-width: 90%; width: 400px;
+            transform: scale(0.7) translateY(50px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+        }
+        .overlay.active .modal { transform: scale(1) translateY(0); }
+        .modal-icon { display: flex; justify-content: center; margin-bottom: 20px; }
+
+        /* Summary Errors Scrolling */
+        .errors-list::-webkit-scrollbar { width: 8px; }
+        .errors-list::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+        .errors-list::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
+
+        /* الفوتر (Footer) */
+        .footer-main {
+            background: var(--dark); color: #cbd5e1;
+            text-align: center; padding: 25px 20px; margin-top: auto;
+            border-top: 4px solid var(--primary);
+        }
+        .footer-main p { margin: 5px 0; font-size: 1.1rem; font-weight: 600;}
+        .footer-main .designer { font-size: 1rem; color: #94a3b8; font-weight: 400;}
+
+        /* WhatsApp */
+        .whatsapp-float {
+            position: fixed; bottom: 25px; left: 25px;
+            background: #25d366; color: white;
+            width: 65px; height: 65px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            text-decoration: none; box-shadow: 0 8px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100; transition: all 0.3s;
+        }
+        .whatsapp-float:hover { transform: scale(1.15) rotate(-5deg); box-shadow: 0 12px 20px rgba(37, 211, 102, 0.6); }
+        .whatsapp-float svg { width: 35px; height: 35px; fill: currentColor; }
+
+        /* Confetti effect */
+        .confetti {
+            position: fixed; top: -10px; width: 12px; height: 12px; z-index: 9999;
+            animation: fall linear forwards; border-radius: 3px;
+        }
+        @keyframes fall { to { transform: translateY(110vh) rotate(720deg); opacity: 0; } }
+
+        /* Map Challenge Style */
+        .map-stage { text-align: center; margin-bottom: 18px; }
+        .map-wrap { position: relative; display: inline-block; max-width: 100%; border-radius: 14px; overflow: hidden;
+            border: 4px solid #0d9488; box-shadow: 0 10px 20px rgba(0,0,0,0.12); background: #fff; }
+        .map-wrap img { display: block; max-width: 100%; max-height: 58vh; width: auto; height: auto; margin: 0 auto; }
+        .map-mask { position: absolute; background: linear-gradient(135deg, #f59e0b, #ea580c); border: 2px solid #fff;
+            border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff;
+            font-weight: 900; font-size: clamp(0.9rem, 2.4vw, 1.4rem); box-shadow: 0 3px 8px rgba(0,0,0,0.35);
+            transition: opacity 0.5s ease; animation: maskPulse 1.6s ease-in-out infinite; }
+        .map-mask.revealed { opacity: 0; animation: none; }
+        @keyframes maskPulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+        .map-stage.zoomed { overflow: auto; -webkit-overflow-scrolling: touch; padding-bottom: 6px; }
+        .map-stage.zoomed .map-wrap { max-width: none; }
+        .map-stage.zoomed .map-wrap img { max-width: none; max-height: none; width: min(1400px, 230vw); }
+        .map-wrap { cursor: zoom-in; }
+        .map-stage.zoomed .map-wrap { cursor: zoom-out; }
+        .map-hint { color: #0f766e; font-weight: 700; font-size: 0.95rem; margin-top: 8px; }
+        .map-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 600px) { .map-options { grid-template-columns: 1fr; } }
+        .map-options .btn { padding: 14px 10px; font-size: clamp(1rem, 3vw, 1.2rem); min-height: 60px; }
+        .map-options .btn.ok { background: linear-gradient(to bottom, #10b981, #047857) !important; }
+        .map-options .btn.bad { background: linear-gradient(to bottom, #ef4444, #b91c1c) !important; }
+        .header-logo { width: 260px; height: 260px; border-radius: 30px; border: 4px solid var(--warning);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.4); background-color: white; object-fit: contain; flex-shrink: 0; }
+        @media (max-width: 600px) { .header-logo { width: 170px; height: 170px; } }
+
+        /* اختيار طريقة اللعب + المنافسة بين فريقين */
+        .mode-modal { background: white; border-radius: 24px; padding: 28px 22px; width: 460px; max-width: 92%;
+            text-align: center; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.35); max-height: 92vh; overflow-y: auto; }
+        .mode-modal h2 { color: var(--primary); font-size: 1.5rem; font-weight: 900; margin-bottom: 4px; }
+        .mode-modal .mode-sub { color: #64748b; font-weight: 700; margin-bottom: 18px; }
+        .mode-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        @media (max-width: 480px) { .mode-choices { grid-template-columns: 1fr; } }
+        .mode-choice { border: 3px solid #ccfbf1; border-radius: 18px; padding: 18px 10px; cursor: pointer; background: #f0fdfa;
+            transition: all .2s; font-weight: 800; color: var(--dark); }
+        .mode-choice:hover { transform: translateY(-3px); border-color: var(--primary-light); }
+        .mode-choice .mc-ico { font-size: 2.2rem; display: block; margin-bottom: 6px; }
+        .mode-choice small { display: block; color: #64748b; font-weight: 600; margin-top: 4px; font-size: .85rem; }
+        .team-setup { display: none; margin-top: 18px; text-align: right; }
+        .team-setup.show { display: block; }
+        .team-setup label { font-weight: 800; color: var(--primary); display: block; margin: 8px 0 4px; }
+        .team-setup input { width: 100%; padding: 11px 14px; border-radius: 12px; border: 2px solid #5eead4; font-family: 'Cairo', sans-serif;
+            font-size: 1.05rem; font-weight: 700; text-align: center; }
+        .team-setup input:focus { outline: none; border-color: var(--primary-light); }
+        .mode-actions { display: flex; gap: 10px; margin-top: 16px; }
+        .mode-actions .btn { flex: 1; }
+        .mode-cancel { background: #e2e8f0 !important; color: var(--dark) !important; border-bottom-color: #cbd5e1 !important; }
+        .team-board { display: none; max-width: 900px; width: calc(100% - 40px); margin: -8px auto 16px; gap: 10px; }
+        .team-board.show { display: flex; }
+        .team-card { flex: 1; background: white; border-radius: 14px; padding: 8px 12px; display: flex; align-items: center;
+            justify-content: space-between; gap: 8px; border: 3px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,.06);
+            font-weight: 800; transition: all .25s; min-width: 0; }
+        .team-card .tname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .team-card .tscore { font-size: 1.4rem; font-weight: 900; min-width: 36px; text-align: center; border-radius: 10px; padding: 0 8px; color: white; }
+        .team-card.t0 .tscore { background: #0d9488; } .team-card.t1 .tscore { background: #ea580c; }
+        .team-card.active.t0 { border-color: #0d9488; transform: scale(1.03); background: #f0fdfa; }
+        .team-card.active.t1 { border-color: #ea580c; transform: scale(1.03); background: #fff7ed; }
+        .team-card .turn-tag { font-size: .75rem; padding: 2px 8px; border-radius: 10px; background: #fef3c7; color: #92400e; display: none; }
+        .team-card.active .turn-tag { display: inline-block; }
+        .winner-box { border-radius: 20px; padding: 22px; margin: 18px 0; color: white; background: linear-gradient(135deg, #f59e0b, #ea580c); }
+        .winner-box h3 { font-size: 1.8rem; font-weight: 900; }
+        .final-scores { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 10px; }
+        .final-scores div { background: rgba(255,255,255,.2); border-radius: 14px; padding: 8px 18px; font-weight: 800; font-size: 1.15rem; }
+    </style>
+</head>
+<body>
+
+    <!-- الهيدر مع اللوجو -->
+    <header class="header-main" id="main-header">
+        <div class="header-content">
+            <div style="display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap;">
+                <!-- اللوجو (على اليمين) -->
+                <img src="logo.jpg" alt="الأستاذ أحمد نورالدين" class="header-logo">
+                
+                <!-- النصوص -->
+                <div style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                    <h1 class="title-line1">
+                        درس 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#2dd4bf" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>
+                        لعبة
+                    </h1>
+                    <h1 class="title-line2">مع الأستاذ أَحْمَد نُورالدِّين</h1>
+                    <h2>الصَّفُّ الْخَامِسُ الابْتِدَائِيُّ - الْوَحْدَةُ الأُولَى - الدَّرْسُ الثَّانِي: مَظَاهِرُ سَطْحِ مِصْرَ</h2>
+                    <p style="margin-top: 10px;">الدِّرَاسَاتُ الاجْتِمَاعِيَّةُ</p>
+                </div>
+            </div>
+        </div>
+        <!-- تموجات زخرفية -->
+        <svg class="header-wave" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+            <path fill="#ecfeff" fill-opacity="1" d="M0,192L48,197.3C96,203,192,213,288,229.3C384,245,480,267,576,250.7C672,235,768,181,864,170.7C960,160,1056,192,1152,208C1248,224,1344,224,1392,224L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </header>
+
+    <!-- الشاشة الرئيسية -->
+    <div id="home-screen">
+        <div class="grid-menu" id="menu-grid">
+            <!-- سيتم حقن البطاقات هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- شاشة اللعب -->
+    <div id="game-screen" class="hidden">
+        <div class="game-nav">
+            <button class="btn back-btn" onclick="returnToMenu()">
+                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                رجوع
+            </button>
+            <strong id="game-title">عنوان اللعبة</strong>
+            <span id="game-progress">1 / 25</span>
+        </div>
+        <div class="team-board" id="team-board">
+            <div class="team-card t0" id="team-card-0"><span class="tname" id="team-name-0">الفريق الأول</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-0">0</span></div>
+            <div class="team-card t1" id="team-card-1"><span class="tname" id="team-name-1">الفريق الثاني</span><span class="turn-tag">دوره الآن</span><span class="tscore" id="team-score-1">0</span></div>
+        </div>
+        <div class="game-container" id="game-container">
+            <!-- سيتم حقن الأسئلة هنا برمجياً -->
+        </div>
+    </div>
+
+    <!-- نافذة الملاحظات السريعة -->
+    <div class="overlay" id="feedback-modal">
+        <div class="modal">
+            <div class="modal-icon" id="feedback-icon"></div>
+            <h2 id="feedback-title" style="font-size: 2.5rem; font-weight: 900;">إجابة صحيحة!</h2>
+        </div>
+    </div>
+
+
+    <!-- نافذة اختيار طريقة اللعب -->
+    <div class="overlay" id="mode-overlay">
+        <div class="mode-modal">
+            <h2 id="mode-game-title">اختر طريقة اللعب</h2>
+            <div class="mode-sub">في كل مرة تظهر ٢٠ سؤالًا مختلفة بشكل عشوائي</div>
+            <div class="mode-choices">
+                <div class="mode-choice" onclick="chooseSolo()"><span class="mc-ico">👤</span>لعب فردي<small>العب وحدك واعرف نتيجتك</small></div>
+                <div class="mode-choice" onclick="chooseTeams()"><span class="mc-ico">🏆</span>منافسة بين فريقين<small>الفريقان يتبادلان الأسئلة</small></div>
+            </div>
+            <div class="team-setup" id="team-setup">
+                <label for="team-a">اسم الفريق الأول</label>
+                <input id="team-a" type="text" maxlength="25" value="الفريق الأول">
+                <label for="team-b">اسم الفريق الثاني</label>
+                <input id="team-b" type="text" maxlength="25" value="الفريق الثاني">
+                <div class="mode-actions">
+                    <button class="btn" onclick="startTeams()">🚀 ابدأ المنافسة</button>
+                </div>
+            </div>
+            <div class="mode-actions"><button class="btn mode-cancel" onclick="closeModePicker()">إلغاء</button></div>
+        </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="footer-main" id="main-footer">
+        <p>جميع الحقوق محفوظة &copy; | دروس وألعاب تعليمية</p>
+        <p class="designer">الأستاذ / أَحْمَد نُورالدِّين - 01022364812</p>
+    </footer>
+
+    <!-- زر الواتساب -->
+    <a href="https://wa.me/201022364812" class="whatsapp-float" target="_blank" title="تواصل معنا">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/>
+        </svg>
+    </a>
+
+<script>
+    const LESSON_NAME = "الدراسات الاجتماعية: مظاهر سطح مصر - الصف الخامس الابتدائي";
+    const allGamesData = [
+    {
+        "id": "mcq_1",
+        "title": "اختيار من متعدد",
+        "type": "mcq",
+        "desc": "أسئلة اختيار من متعدد حول مظاهر سطح مصر",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"11 5 6 9 2 9 2 15 6 15 11 19 11 5\"></polygon><path d=\"M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07\"></path></svg>",
+        "questions": [
+            {
+                "q": "ينقسم سطح مصر إلى ... وحدات تضاريسية:",
+                "options": [
+                    "أربع",
+                    "خمس",
+                    "ست",
+                    "ثلاث"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من الوحدات التضاريسية لسطح مصر:",
+                "options": [
+                    "وادي النيل والدلتا ومنخفض الفيوم",
+                    "هضبة التبت",
+                    "الصحراء الكبرى بالجزائر",
+                    "جبال الألب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "معظم أراضي مصر ذات طبيعة:",
+                "options": [
+                    "ساحلية",
+                    "صحراوية",
+                    "زراعية",
+                    "جبلية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أصغر أقسام سطح مصر مساحة:",
+                "options": [
+                    "الصحراء الشرقية",
+                    "شبه جزيرة سيناء",
+                    "الصحراء الغربية",
+                    "وادي النيل والدلتا ومنخفض الفيوم"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكبر الوحدات التضاريسية في مصر من حيث المساحة:",
+                "options": [
+                    "الصحراء الغربية",
+                    "وادي النيل",
+                    "شبه جزيرة سيناء",
+                    "الصحراء الشرقية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تتميز أراضي وادي النيل والدلتا بـ:",
+                "options": [
+                    "الكثبان الرملية",
+                    "الجبال الوعرة",
+                    "البراكين",
+                    "خصوبة التربة والمياه العذبة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أراضٍ خصبة كونها نهر النيل نتيجة ترسيب الطمي عند المصب:",
+                "options": [
+                    "وادي النيل",
+                    "دلتا النيل",
+                    "منخفض القطارة",
+                    "بحر الرمال العظيم"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تأخذ دلتا النيل شكل:",
+                "options": [
+                    "مربع",
+                    "دائرة",
+                    "مثلث",
+                    "مستطيل"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "تبلغ مساحة الدلتا حوالي ... مساحة الأراضي الزراعية:",
+                "options": [
+                    "عشر",
+                    "نصف",
+                    "ثلث",
+                    "ربع"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الأراضي الممتدة على جانبي نهر النيل:",
+                "options": [
+                    "الأودية الجافة",
+                    "الدلتا",
+                    "وادي النيل",
+                    "منخفض الفيوم"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "يمتد وادي النيل من:",
+                "options": [
+                    "العريش حتى رفح",
+                    "الحدود الجنوبية لمصر حتى القاهرة",
+                    "سيوة حتى الفيوم",
+                    "القاهرة حتى الإسكندرية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يتميز منخفض الفيوم بوصول مياه النيل والطمي إليه عن طريق:",
+                "options": [
+                    "ترعة الإسماعيلية",
+                    "ترعة السلام",
+                    "قناة السويس",
+                    "ترعة بحر يوسف"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "يُعد منخفض الفيوم بيئة زراعية رغم وقوعه في الصحراء الغربية بسبب:",
+                "options": [
+                    "وصول مياه النيل والطمي إليه",
+                    "وجود الجبال",
+                    "كثرة الأمطار",
+                    "قربه من البحر"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ساهمت الزراعة في:",
+                "options": [
+                    "استقرار المصري القديم حول النيل وقيام الحضارة",
+                    "هجرة المصريين",
+                    "انتشار الصحاري",
+                    "قلة السكان"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يغلب على الصحراء الغربية المظهر:",
+                "options": [
+                    "الهضبي",
+                    "الجبلي",
+                    "البركاني",
+                    "السهلي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من هضاب الصحراء الغربية:",
+                "options": [
+                    "المقطم",
+                    "المعازة والعبابدة",
+                    "الجلف الكبير ومارمريكا",
+                    "التيه"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "تقع هضبة الجلف الكبير في ... الصحراء الغربية:",
+                "options": [
+                    "شرق",
+                    "شمال",
+                    "وسط",
+                    "جنوب"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "تقع هضبة مارمريكا في ... الصحراء الغربية:",
+                "options": [
+                    "الشمال الغربي",
+                    "الجنوب الشرقي",
+                    "الجنوب",
+                    "الوسط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من أشهر جبال الصحراء الغربية:",
+                "options": [
+                    "جبل سانت كاترين",
+                    "جبل العوينات",
+                    "جبل الحلال",
+                    "جبل شايب البنات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يقع جبل العوينات في:",
+                "options": [
+                    "سيناء",
+                    "الدلتا",
+                    "الجنوب الغربي",
+                    "الشمال الشرقي"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من أمثلة الكثبان الرملية في الصحراء الغربية:",
+                "options": [
+                    "هضبة التيه",
+                    "بحر الرمال العظيم",
+                    "جبل موسى",
+                    "وادي قنا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكبر منخفضات الصحراء الغربية:",
+                "options": [
+                    "منخفض القطارة",
+                    "منخفض الفيوم",
+                    "منخفض الخارجة",
+                    "منخفض سيوة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "منخفض القطارة:",
+                "options": [
+                    "مزدحم بالسكان",
+                    "منطقة صناعية",
+                    "به أكبر المدن",
+                    "نادر السكان"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من المنخفضات المأهولة بالسكان:",
+                "options": [
+                    "بحر الرمال",
+                    "القطارة",
+                    "سيوة والداخلة والخارجة والبحرية والفرافرة",
+                    "الجلف الكبير"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "تعيش السكان في بعض المنخفضات لوجود:",
+                "options": [
+                    "الجبال العالية",
+                    "البترول فقط",
+                    "الجليد",
+                    "المياه الجوفية والنشاط الزراعي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "الصحراء الشرقية صحراء:",
+                "options": [
+                    "رملية فقط",
+                    "سهلية",
+                    "جبلية هضبية",
+                    "منخفضة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "تتميز الصحراء الشرقية بغناها بالمعادن مثل:",
+                "options": [
+                    "اليورانيوم",
+                    "الفحم فقط",
+                    "الذهب",
+                    "الماس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "توجد في الصحراء الشرقية حقول:",
+                "options": [
+                    "الأرز",
+                    "القطن",
+                    "القمح",
+                    "البترول والغاز الطبيعي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من هضاب الصحراء الشرقية:",
+                "options": [
+                    "التيه",
+                    "الجلف الكبير",
+                    "المعازة في الشمال والعبابدة في الجنوب",
+                    "مارمريكا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أشهر جبال الصحراء الشرقية:",
+                "options": [
+                    "جبل الحلال",
+                    "جبل العوينات",
+                    "جبل موسى",
+                    "سلسلة جبال البحر الأحمر"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أعلى قمم جبال البحر الأحمر:",
+                "options": [
+                    "جبل العوينات",
+                    "جبل شايب البنات",
+                    "جبل سانت كاترين",
+                    "جبل علبة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أودية كانت تملؤها المياه قديمًا ثم جفت:",
+                "options": [
+                    "الدلتا",
+                    "الهضاب",
+                    "المنخفضات",
+                    "الأودية الجافة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من أمثلة الأودية الجافة:",
+                "options": [
+                    "وادي قنا",
+                    "الدلتا",
+                    "منخفض الفيوم",
+                    "وادي النيل"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يمكن استخدام الأودية الجافة في:",
+                "options": [
+                    "بناء الموانئ",
+                    "الصيد",
+                    "تخزين المياه عند حدوث السيول",
+                    "الملاحة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "يتميز جنوب سيناء بـ:",
+                "options": [
+                    "السهول الساحلية",
+                    "المنخفضات",
+                    "الدلتا",
+                    "الجبال الوعرة مثل سانت كاترين وموسى"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ينتشر في وسط سيناء:",
+                "options": [
+                    "الجبال الوعرة فقط",
+                    "الكثبان فقط",
+                    "الدلتا",
+                    "الهضاب مثل هضبة التيه"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من الأودية الجافة في سيناء:",
+                "options": [
+                    "وادي النيل",
+                    "وادي قنا",
+                    "وادي حلفا",
+                    "وادي العريش"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "يتميز شمال سيناء بـ:",
+                "options": [
+                    "الهضاب العالية",
+                    "المنخفضات",
+                    "الجبال الوعرة فقط",
+                    "السهول الساحلية وبعض الجبال مثل جبل الحلال"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "العوامل التي تحدث في باطن الأرض:",
+                "options": [
+                    "العوامل البشرية",
+                    "العوامل الخارجية",
+                    "العوامل المناخية",
+                    "العوامل الباطنية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من العوامل الباطنية:",
+                "options": [
+                    "الترسيب",
+                    "الالتواءات والانكسارات",
+                    "التعرية بالرياح",
+                    "التعرية المائية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ساهمت الانكسارات في تشكيل:",
+                "options": [
+                    "جبال البحر الأحمر",
+                    "الكثبان الرملية",
+                    "وادي النيل",
+                    "الدلتا"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "العوامل التي تحدث على سطح الأرض:",
+                "options": [
+                    "العوامل الباطنية",
+                    "العوامل الخارجية",
+                    "الالتواءات",
+                    "الانكسارات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "شكلت التعرية بفعل الرياح:",
+                "options": [
+                    "الدلتا",
+                    "الكثبان الرملية",
+                    "الأودية الجافة",
+                    "جبال البحر الأحمر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "شكلت التعرية المائية:",
+                "options": [
+                    "الكثبان الرملية",
+                    "جبال البحر الأحمر",
+                    "هضبة التيه",
+                    "وادي النيل والأودية الجافة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ساعد تنوع مظاهر السطح في مصر على:",
+                "options": [
+                    "قلة الثروات",
+                    "قلة السكان",
+                    "تنوع الثروات الطبيعية وتعدد الأنشطة الاقتصادية",
+                    "توحيد الأنشطة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "استثمر المصريون القدماء الصحاري فأخذوا منها المعادن مثل:",
+                "options": [
+                    "الذهب والنحاس والحديد",
+                    "اليورانيوم",
+                    "البترول",
+                    "الفحم"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تقع الصحراء البيضاء في:",
+                "options": [
+                    "الدلتا",
+                    "سيناء",
+                    "واحة الفرافرة بالوادي الجديد",
+                    "البحر الأحمر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "تتميز الصحراء البيضاء بـ:",
+                "options": [
+                    "بقايا براكين سوداء",
+                    "غابات",
+                    "تكوينات صخرية جيرية فريدة بفعل الرياح",
+                    "مياه عذبة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "يغطي اللون الأسود الصحراء السوداء بسبب:",
+                "options": [
+                    "بقايا الانفجارات البركانية",
+                    "الفحم",
+                    "البترول",
+                    "الأشجار"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تقع الصحراء السوداء في محافظة:",
+                "options": [
+                    "الوادي الجديد",
+                    "البحر الأحمر",
+                    "مطروح",
+                    "جنوب سيناء"
+                ],
+                "ans": 0
+            }
+        ]
+    },
+    {
+        "id": "bubbles_2",
+        "title": "الفقاعات المتساقطة",
+        "type": "bubbles",
+        "desc": "التقط الفقاعة ذات الإجابة الصحيحة عن مظاهر سطح مصر",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M21.21 15.89A10 10 0 1 1 8 2.83\"></path><path d=\"M22 12A10 10 0 0 0 12 2v10z\"></path></svg>",
+        "questions": [
+            {
+                "q": "عدد الوحدات التضاريسية لمصر؟",
+                "options": [
+                    "ثلاث",
+                    "ست",
+                    "أربع",
+                    "خمس"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "طبيعة معظم أراضي مصر؟",
+                "options": [
+                    "صحراوية",
+                    "ساحلية",
+                    "جبلية",
+                    "زراعية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أصغر أقسام سطح مصر؟",
+                "options": [
+                    "الصحراء الشرقية",
+                    "سيناء",
+                    "الصحراء الغربية",
+                    "وادي النيل والدلتا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكبر الوحدات التضاريسية؟",
+                "options": [
+                    "الدلتا",
+                    "الصحراء الشرقية",
+                    "سيناء",
+                    "الصحراء الغربية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "شكل الدلتا؟",
+                "options": [
+                    "دائرة",
+                    "مستطيل",
+                    "مربع",
+                    "مثلث"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما كوّن الدلتا؟",
+                "options": [
+                    "البراكين",
+                    "ترسيب الطمي",
+                    "الجليد",
+                    "الرياح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "نسبة الدلتا من الأراضي الزراعية؟",
+                "options": [
+                    "العشر",
+                    "الربع",
+                    "الثلث",
+                    "حوالي النصف"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "امتداد وادي النيل؟",
+                "options": [
+                    "من سيوة للفيوم",
+                    "من القاهرة للإسكندرية",
+                    "من الجنوب حتى القاهرة",
+                    "من العريش لرفح"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ترعة تغذي الفيوم؟",
+                "options": [
+                    "المحمودية",
+                    "بحر يوسف",
+                    "الإسماعيلية",
+                    "السلام"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "سبب زراعة الفيوم؟",
+                "options": [
+                    "الجبال",
+                    "مياه النيل والطمي",
+                    "الأمطار",
+                    "البحر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "مظهر يغلب على الصحراء الغربية؟",
+                "options": [
+                    "البركاني",
+                    "الهضبي",
+                    "الجبلي",
+                    "السهلي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "هضبة جنوب الصحراء الغربية؟",
+                "options": [
+                    "التيه",
+                    "الجلف الكبير",
+                    "المعازة",
+                    "مارمريكا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "هضبة شمال غرب مصر؟",
+                "options": [
+                    "الجلف الكبير",
+                    "مارمريكا",
+                    "التيه",
+                    "العبابدة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "جبل الصحراء الغربية الأشهر؟",
+                "options": [
+                    "سانت كاترين",
+                    "العوينات",
+                    "الحلال",
+                    "شايب البنات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "كثبان رملية بالصحراء الغربية؟",
+                "options": [
+                    "بحر الرمال العظيم",
+                    "وادي قنا",
+                    "هضبة التيه",
+                    "جبل موسى"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكبر المنخفضات؟",
+                "options": [
+                    "الفيوم",
+                    "القطارة",
+                    "الخارجة",
+                    "سيوة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "منخفض نادر السكان؟",
+                "options": [
+                    "سيوة",
+                    "القطارة",
+                    "الداخلة",
+                    "الخارجة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "سبب سكن المنخفضات؟",
+                "options": [
+                    "المياه الجوفية",
+                    "الجليد",
+                    "البترول",
+                    "الجبال"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "منخفض مأهول بالسكان؟",
+                "options": [
+                    "سيوة",
+                    "بحر الرمال",
+                    "القطارة",
+                    "الجلف"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "طبيعة الصحراء الشرقية؟",
+                "options": [
+                    "جبلية هضبية",
+                    "رملية",
+                    "سهلية",
+                    "منخفضة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "معدن بالصحراء الشرقية؟",
+                "options": [
+                    "الفحم",
+                    "اليورانيوم",
+                    "الماس",
+                    "الذهب"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ثروة بالصحراء الشرقية؟",
+                "options": [
+                    "البترول والغاز",
+                    "القمح",
+                    "القطن",
+                    "الأرز"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "هضبة شمال الصحراء الشرقية؟",
+                "options": [
+                    "الجلف",
+                    "مارمريكا",
+                    "العبابدة",
+                    "المعازة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "هضبة جنوب الصحراء الشرقية؟",
+                "options": [
+                    "مارمريكا",
+                    "العبابدة",
+                    "التيه",
+                    "المعازة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أعلى قمم البحر الأحمر؟",
+                "options": [
+                    "العوينات",
+                    "سانت كاترين",
+                    "علبة",
+                    "شايب البنات"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أودية جفت مياهها؟",
+                "options": [
+                    "الأودية الجافة",
+                    "المنخفضات",
+                    "الدلتا",
+                    "السهول"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مثال وادٍ جاف بالصحراء الشرقية؟",
+                "options": [
+                    "وادي العريش",
+                    "الدلتا",
+                    "وادي قنا",
+                    "وادي النيل"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "فائدة الأودية الجافة؟",
+                "options": [
+                    "الملاحة",
+                    "تخزين مياه السيول",
+                    "التعدين",
+                    "الصيد"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "جنوب سيناء يتميز بـ؟",
+                "options": [
+                    "الدلتا",
+                    "الجبال الوعرة",
+                    "السهول",
+                    "المنخفضات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "وسط سيناء يتميز بـ؟",
+                "options": [
+                    "البحيرات",
+                    "الدلتا",
+                    "الجبال الوعرة",
+                    "الهضاب"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "شمال سيناء يتميز بـ؟",
+                "options": [
+                    "المنخفضات",
+                    "السهول الساحلية",
+                    "الهضاب العالية",
+                    "الجبال الوعرة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "هضبة وسط سيناء؟",
+                "options": [
+                    "المعازة",
+                    "التيه",
+                    "العبابدة",
+                    "الجلف"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "وادٍ جاف في سيناء؟",
+                "options": [
+                    "وادي حلفا",
+                    "وادي العريش",
+                    "وادي قنا",
+                    "وادي النيل"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "جبل في شمال سيناء؟",
+                "options": [
+                    "الحلال",
+                    "موسى",
+                    "سانت كاترين",
+                    "العوينات"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "جبال جنوب سيناء؟",
+                "options": [
+                    "العوينات",
+                    "الحلال",
+                    "سانت كاترين وموسى",
+                    "شايب البنات"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "عوامل في باطن الأرض؟",
+                "options": [
+                    "الباطنية",
+                    "البشرية",
+                    "الخارجية",
+                    "المناخية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "مثال عامل باطني؟",
+                "options": [
+                    "الترسيب",
+                    "الرياح",
+                    "المياه",
+                    "الالتواءات"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما شكّل جبال البحر الأحمر؟",
+                "options": [
+                    "الانكسارات",
+                    "المياه",
+                    "الرياح",
+                    "الترسيب"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "عوامل على سطح الأرض؟",
+                "options": [
+                    "الالتواءات",
+                    "الانكسارات",
+                    "الباطنية",
+                    "الخارجية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما شكلته الرياح؟",
+                "options": [
+                    "الجبال",
+                    "الأودية",
+                    "الكثبان الرملية",
+                    "الدلتا"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما شكلته المياه؟",
+                "options": [
+                    "الهضاب",
+                    "الجبال",
+                    "الكثبان",
+                    "وادي النيل"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "نتيجة تنوع السطح؟",
+                "options": [
+                    "تنوع الأنشطة الاقتصادية",
+                    "قلة الثروة",
+                    "الفقر",
+                    "توحيد الأنشطة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "معادن أخذها القدماء من الصحراء؟",
+                "options": [
+                    "الفحم",
+                    "اليورانيوم",
+                    "الذهب والنحاس",
+                    "البترول"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "مكان الصحراء البيضاء؟",
+                "options": [
+                    "الفرافرة",
+                    "سيناء",
+                    "الدلتا",
+                    "البحر الأحمر"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "سبب لون الصحراء السوداء؟",
+                "options": [
+                    "الأشجار",
+                    "البراكين",
+                    "الفحم",
+                    "البترول"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما يميز الصحراء البيضاء؟",
+                "options": [
+                    "تكوينات جيرية",
+                    "غابات",
+                    "مياه",
+                    "براكين"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "محافظة الصحراء البيضاء والسوداء؟",
+                "options": [
+                    "الوادي الجديد",
+                    "سيناء",
+                    "مطروح",
+                    "البحر الأحمر"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "قيمة من الدرس؟",
+                "options": [
+                    "التبذير",
+                    "الحفاظ على الموارد",
+                    "الإسراف",
+                    "الإهمال"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما تجذبه المناظر الخلابة؟",
+                "options": [
+                    "السياح",
+                    "الجفاف",
+                    "التلوث",
+                    "الزحام"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "منخفض شمال الصحراء الغربية الكبير؟",
+                "options": [
+                    "الداخلة",
+                    "الخارجة",
+                    "القطارة",
+                    "الفرافرة"
+                ],
+                "ans": 2
+            }
+        ]
+    },
+    {
+        "id": "shooting_3",
+        "title": "التنشين والاصطياد",
+        "type": "shooting",
+        "desc": "صوّب نحو الكلمة الصحيحة لإكمال عبارات مظاهر سطح مصر",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><circle cx=\"12\" cy=\"12\" r=\"10\"></circle><circle cx=\"12\" cy=\"12\" r=\"6\"></circle><circle cx=\"12\" cy=\"12\" r=\"2\"></circle></svg>",
+        "questions": [
+            {
+                "q": "أكمل: «ينقسم سطح مصر إلى ... وحدات تضاريسية».",
+                "options": [
+                    "أربع",
+                    "ثلاث",
+                    "ست",
+                    "خمس"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «معظم أراضي مصر ذات طبيعة ...».",
+                "options": [
+                    "ساحلية",
+                    "صحراوية",
+                    "جبلية",
+                    "زراعية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «وادي النيل والدلتا ومنخفض الفيوم هو ... أقسام سطح مصر مساحة».",
+                "options": [
+                    "أقدم",
+                    "أعلى",
+                    "أصغر",
+                    "أكبر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «دلتا النيل أراضٍ خصبة كونها النهر نتيجة ترسيب ... عند المصب».",
+                "options": [
+                    "الصخور",
+                    "الرمال",
+                    "الطمي",
+                    "الحصى"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «تأخذ دلتا النيل شكل ...».",
+                "options": [
+                    "مربع",
+                    "مستطيل",
+                    "مثلث",
+                    "دائرة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «تبلغ مساحة الدلتا حوالي ... مساحة الأراضي الزراعية».",
+                "options": [
+                    "ربع",
+                    "خمس",
+                    "نصف",
+                    "ثلث"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «وادي النيل الأراضي الممتدة على ... نهر النيل».",
+                "options": [
+                    "مصب",
+                    "جانبي",
+                    "منبع",
+                    "أسفل"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «يمتد وادي النيل من الحدود الجنوبية حتى ...».",
+                "options": [
+                    "العريش",
+                    "سيوة",
+                    "الإسكندرية",
+                    "القاهرة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «تصل مياه النيل إلى منخفض الفيوم عن طريق ترعة ...».",
+                "options": [
+                    "السلام",
+                    "بحر يوسف",
+                    "المحمودية",
+                    "الإسماعيلية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «ساهمت الزراعة في استقرار المصري القديم حول نهر ...».",
+                "options": [
+                    "دجلة",
+                    "الفرات",
+                    "النيل",
+                    "الأردن"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «الصحراء الغربية أكبر الوحدات التضاريسية في مصر من حيث ...».",
+                "options": [
+                    "السكان",
+                    "المساحة",
+                    "الأمطار",
+                    "الارتفاع"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «يغلب على الصحراء الغربية المظهر ...».",
+                "options": [
+                    "السهلي",
+                    "الهضبي",
+                    "الجبلي",
+                    "البحري"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «من هضاب الصحراء الغربية هضبة ... الكبير في الجنوب».",
+                "options": [
+                    "العبابدة",
+                    "المعازة",
+                    "الجلف",
+                    "التيه"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «من هضاب الصحراء الغربية هضبة ... في الشمال الغربي».",
+                "options": [
+                    "المعازة",
+                    "العبابدة",
+                    "مارمريكا",
+                    "التيه"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «من أشهر جبال الصحراء الغربية جبل ...».",
+                "options": [
+                    "سانت كاترين",
+                    "شايب البنات",
+                    "العوينات",
+                    "الحلال"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «من الكثبان الرملية بحر ... العظيم».",
+                "options": [
+                    "الرمال",
+                    "الصحراء",
+                    "الجبال",
+                    "الظلمات"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «أكبر المنخفضات منخفض ... وهو نادر السكان».",
+                "options": [
+                    "الخارجة",
+                    "سيوة",
+                    "الداخلة",
+                    "القطارة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «توجد منخفضات مأهولة بالسكان لوجود المياه ... والنشاط الزراعي».",
+                "options": [
+                    "المالحة",
+                    "المتجمدة",
+                    "الجوفية",
+                    "الملوثة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «الصحراء الشرقية صحراء جبلية ... لكثرة الجبال والهضاب».",
+                "options": [
+                    "منخفضة",
+                    "هضبية",
+                    "رملية",
+                    "سهلية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «الصحراء الشرقية غنية بالمعادن ك...».",
+                "options": [
+                    "اليورانيوم",
+                    "الماس",
+                    "القصدير",
+                    "الذهب"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «يوجد بالصحراء الشرقية حقول البترول و... الطبيعي».",
+                "options": [
+                    "الفحم",
+                    "الغاز",
+                    "الملح",
+                    "الحديد"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «من هضاب الصحراء الشرقية هضبة ... في شمالها».",
+                "options": [
+                    "المعازة",
+                    "مارمريكا",
+                    "العبابدة",
+                    "الجلف"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «من هضاب الصحراء الشرقية هضبة ... في جنوبها».",
+                "options": [
+                    "التيه",
+                    "المعازة",
+                    "مارمريكا",
+                    "العبابدة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «أشهر جبال الصحراء الشرقية سلسلة جبال البحر ...».",
+                "options": [
+                    "الأحمر",
+                    "الميت",
+                    "المتوسط",
+                    "الأسود"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «أعلى قمم جبال البحر الأحمر جبل ...».",
+                "options": [
+                    "سانت كاترين",
+                    "العوينات",
+                    "شايب البنات",
+                    "موسى"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «الأودية ... هي أودية كانت تملؤها المياه قديمًا ثم جفت».",
+                "options": [
+                    "الخصبة",
+                    "الجافة",
+                    "الساحلية",
+                    "المائية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «من أمثلة الأودية الجافة وادي ...».",
+                "options": [
+                    "حلفا",
+                    "قنا",
+                    "الملوك",
+                    "النيل"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «يمكن استخدام الأودية الجافة في تخزين المياه عند حدوث ...».",
+                "options": [
+                    "الجفاف",
+                    "الرياح",
+                    "الزلازل",
+                    "السيول"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «يتميز جنوب سيناء بالجبال ... مثل سانت كاترين».",
+                "options": [
+                    "الساحلية",
+                    "المنخفضة",
+                    "الرملية",
+                    "الوعرة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «ينتشر في وسط سيناء الهضاب مثل هضبة ...».",
+                "options": [
+                    "المعازة",
+                    "التيه",
+                    "العبابدة",
+                    "الجلف"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «من الأودية الجافة في سيناء وادي ...».",
+                "options": [
+                    "العريش",
+                    "حلفا",
+                    "قنا",
+                    "النيل"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «يتميز شمال سيناء بالسهول ...».",
+                "options": [
+                    "الجبلية",
+                    "الصحراوية",
+                    "الساحلية",
+                    "الفيضية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «من جبال شمال سيناء جبل ...».",
+                "options": [
+                    "العوينات",
+                    "الحلال",
+                    "سانت كاترين",
+                    "موسى"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «العوامل ... هي التي تحدث في باطن الأرض».",
+                "options": [
+                    "الخارجية",
+                    "الجوية",
+                    "الباطنية",
+                    "البشرية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «من العوامل الباطنية الالتواءات و...».",
+                "options": [
+                    "الترسيب",
+                    "الرياح",
+                    "المياه",
+                    "الانكسارات"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «ساهمت الانكسارات في تشكيل جبال البحر ...».",
+                "options": [
+                    "الأحمر",
+                    "الأسود",
+                    "المتوسط",
+                    "العربي"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «العوامل ... هي التي تحدث على سطح الأرض».",
+                "options": [
+                    "الالتوائية",
+                    "الباطنية",
+                    "الخارجية",
+                    "الانكسارية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «شكلت التعرية بفعل ... الكثبان الرملية».",
+                "options": [
+                    "المياه",
+                    "البراكين",
+                    "الزلازل",
+                    "الرياح"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «شكلت التعرية ... وادي النيل والأودية الجافة».",
+                "options": [
+                    "البركانية",
+                    "الجليدية",
+                    "المائية",
+                    "الريحية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «ساعد تنوع مظاهر السطح على تنوع الثروات وتعدد الأنشطة ...».",
+                "options": [
+                    "الاقتصادية",
+                    "الفنية",
+                    "الترفيهية",
+                    "الرياضية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «استثمر المصريون القدماء الصحاري فأخذوا منها المعادن كالذهب و...».",
+                "options": [
+                    "الفحم",
+                    "اليورانيوم",
+                    "البترول",
+                    "النحاس"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «بنى المصريون القدماء في الصحاري مقابرهم و... وقلاعهم».",
+                "options": [
+                    "مصانعهم",
+                    "معابدهم",
+                    "موانئهم",
+                    "مطاراتهم"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «تقع الصحراء البيضاء في واحة ...».",
+                "options": [
+                    "الخارجة",
+                    "سيوة",
+                    "الفرافرة",
+                    "البحرية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «تتميز الصحراء البيضاء بتكوينات صخرية ... بفعل الرياح».",
+                "options": [
+                    "بركانية",
+                    "جيرية",
+                    "جليدية",
+                    "رملية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أكمل: «يغطي الصحراء السوداء اللون الأسود بسبب بقايا الانفجارات ...».",
+                "options": [
+                    "البركانية",
+                    "الجوية",
+                    "النووية",
+                    "الكيميائية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «تقع الصحراء البيضاء والسوداء في محافظة ...».",
+                "options": [
+                    "الوادي الجديد",
+                    "مطروح",
+                    "جنوب سيناء",
+                    "البحر الأحمر"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «المناظر الطبيعية الخلابة تجذب ...».",
+                "options": [
+                    "السياح",
+                    "التلوث",
+                    "الجفاف",
+                    "الحشرات"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أكمل: «من الضروري الحفاظ على الموارد لمراعاة حقوق الأجيال ...».",
+                "options": [
+                    "السابقة",
+                    "القديمة",
+                    "القادمة",
+                    "الماضية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "أكمل: «يقع منخفض الفيوم في الصحراء ...».",
+                "options": [
+                    "الشرقية",
+                    "الجنوبية",
+                    "سيناء",
+                    "الغربية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "أكمل: «تقع هضبة الجلف الكبير في الصحراء ...».",
+                "options": [
+                    "الشرقية",
+                    "الدلتا",
+                    "سيناء",
+                    "الغربية"
+                ],
+                "ans": 3
+            }
+        ]
+    },
+    {
+        "id": "true_false_4",
+        "title": "صح أم خطأ",
+        "type": "true_false",
+        "desc": "حدد صحة العبارات المتعلقة بـ مظاهر سطح مصر",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><path d=\"M22 11.08V12a10 10 0 1 1-5.93-9.14\"></path><polyline points=\"22 4 12 14.01 9 11.01\"></polyline></svg>",
+        "questions": [
+            {
+                "q": "يمتد وادي النيل من حدود مصر الجنوبية حتى مدينة العريش.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يمتد وادي النيل من حدود مصر الجنوبية حتى القاهرة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يقع منخفض الفيوم في الصحراء الشرقية قرب نهر النيل.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تعد هضبة الجلف الكبير أحد مظاهر السطح في الصحراء الغربية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تعد الصحراء الشرقية من أغنى مناطق مصر بمعدن الذهب.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تعتمد الزراعة في الوادي والدلتا على المياه الجوفية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "أدى تنوع مظاهر سطح مصر إلى تنوع الأنشطة الاقتصادية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ينقسم سطح مصر إلى أربع وحدات تضاريسية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "معظم أراضي مصر ذات طبيعة صحراوية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "وادي النيل والدلتا ومنخفض الفيوم أكبر أقسام سطح مصر مساحة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "الدلتا تأخذ شكل مثلث.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تبلغ مساحة الدلتا حوالي نصف الأراضي الزراعية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تصل مياه النيل إلى الفيوم عن طريق ترعة بحر يوسف.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الصحراء الغربية أكبر الوحدات التضاريسية مساحة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يغلب على الصحراء الغربية المظهر الجبلي.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تقع هضبة مارمريكا في الشمال الغربي.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يقع جبل العوينات في الصحراء الشرقية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يقع جبل العوينات في الجنوب الغربي لمصر.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "بحر الرمال العظيم من الكثبان الرملية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "منخفض القطارة أكبر المنخفضات ومزدحم بالسكان.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "منخفض القطارة نادر السكان.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تسكن بعض المنخفضات لوجود المياه الجوفية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "سيوة والداخلة والخارجة منخفضات مأهولة بالسكان.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الصحراء الشرقية صحراء جبلية هضبية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "توجد حقول البترول والغاز في الصحراء الشرقية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "هضبة المعازة في جنوب الصحراء الشرقية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "هضبة العبابدة في جنوب الصحراء الشرقية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "أعلى قمم جبال البحر الأحمر جبل شايب البنات.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "وادي قنا من الأودية الجافة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يمكن استخدام الأودية الجافة في تخزين مياه السيول.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يتميز جنوب سيناء بالسهول الساحلية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يتميز جنوب سيناء بالجبال الوعرة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "هضبة التيه تقع في وسط سيناء.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "وادي العريش من الأودية الجافة في سيناء.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "جبل الحلال يقع في شمال سيناء.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "الالتواءات والانكسارات من العوامل الخارجية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الالتواءات والانكسارات من العوامل الباطنية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تكونت جبال البحر الأحمر بفعل الانكسارات.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تكونت جبال البحر الأحمر بفعل حركة الهواء.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "شكلت الرياح الكثبان الرملية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "شكلت التعرية المائية وادي النيل.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "استثمر المصريون القدماء الصحاري في الحصول على المعادن.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تقع الصحراء البيضاء في واحة الفرافرة.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "يرجع لون الصحراء السوداء إلى بقايا البراكين.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تتميز الصحراء البيضاء بتكوينات صخرية جيرية.",
+                "options": [
+                    "صح",
+                    "خطأ"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "تقع الصحراء البيضاء في شبه جزيرة سيناء.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ساهمت الزراعة في قيام الحضارة المصرية القديمة.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "يوجد جبل سانت كاترين في شبه جزيرة سيناء.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "الدلتا كونها نهر النيل بترسيب الطمي.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "تتنوع مظاهر السطح في الصحراء الغربية.",
+                "options": [
+                    "خطأ",
+                    "صح"
+                ],
+                "ans": 1
+            }
+        ]
+    },
+    {
+        "id": "genius_5",
+        "title": "تحدي العباقرة",
+        "type": "genius",
+        "desc": "تحدٍّ سريع للعباقرة: فكّر وفسّر وقارن في مظاهر سطح مصر",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z\"></path></svg>",
+        "questions": [
+            {
+                "q": "ما المقصود بالأودية الجافة؟",
+                "options": [
+                    "منخفضات مأهولة",
+                    "سهول ساحلية",
+                    "أودية كانت تملؤها المياه قديمًا ثم جفت مثل وادي قنا",
+                    "أودية بها أنهار دائمة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما المقصود بالدلتا؟",
+                "options": [
+                    "أراضٍ خصبة كونها النيل بترسيب الطمي عند المصب على شكل مثلث",
+                    "منخفض صحراوي",
+                    "صحراء رملية",
+                    "جبال وعرة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اذكر الوحدات التضاريسية لسطح مصر:",
+                "options": [
+                    "الجبال والسهول فقط",
+                    "وادي النيل والدلتا والفيوم، الصحراء الغربية، الصحراء الشرقية، سيناء",
+                    "الدلتا فقط",
+                    "الصحاري فقط"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "بم تفسر: يُعد منخفض الفيوم بيئة زراعية رغم وقوعه في الصحراء الغربية؟",
+                "options": [
+                    "لكثرة الأمطار",
+                    "لوصول مياه النيل والطمي إليه عبر ترعة بحر يوسف",
+                    "لقربه من البحر",
+                    "لوجود الجبال"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "دلل على تنوع مظاهر السطح في الصحراء الغربية:",
+                "options": [
+                    "ليس بها تنوع",
+                    "بها هضاب كالجلف الكبير وجبال كالعوينات وكثبان كبحر الرمال ومنخفضات كالقطارة",
+                    "بها سهول فقط",
+                    "بها جبال فقط"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "فسر أسباب تركز السكان في منخفض سيوة وندرتهم في القطارة:",
+                "options": [
+                    "البرودة في القطارة",
+                    "بلا سبب",
+                    "كثرة الجبال في سيوة",
+                    "وجود المياه الجوفية والزراعة في سيوة وعدمها في القطارة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "وضح أهمية الأودية الجافة:",
+                "options": [
+                    "يمكن استخدامها في تخزين المياه عند حدوث السيول",
+                    "للصيد",
+                    "للملاحة",
+                    "لا أهمية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "اذكر أهم الموارد في الصحراء الشرقية:",
+                "options": [
+                    "الأخشاب",
+                    "القطن",
+                    "القمح",
+                    "المعادن كالذهب وحقول البترول والغاز الطبيعي"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "فسر قيام الزراعة في الواحات:",
+                "options": [
+                    "لقربها من البحر",
+                    "لوجود المياه الجوفية",
+                    "لكثرة الأمطار",
+                    "لوجود الأنهار"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "قارن بين الصحراء الغربية وسيناء في أهم الهضاب:",
+                "options": [
+                    "سيناء: الجلف",
+                    "الغربية: التيه",
+                    "لا هضاب بهما",
+                    "الغربية: الجلف ومارمريكا، سيناء: التيه"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "قارن بين الصحراء الغربية وسيناء في أهم الجبال:",
+                "options": [
+                    "سيناء: العوينات",
+                    "لا جبال",
+                    "الغربية: العوينات، سيناء: سانت كاترين وموسى والحلال",
+                    "الغربية: سانت كاترين"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "وضح العوامل التي شكلت سطح مصر:",
+                "options": [
+                    "عوامل باطنية كالالتواءات والانكسارات وخارجية كالتعرية بالرياح والمياه",
+                    "لا عوامل",
+                    "عوامل بشرية فقط",
+                    "الأمطار فقط"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "حدد العوامل المؤثرة في تشكيل الصحراء البيضاء والسوداء:",
+                "options": [
+                    "الرياح فقط",
+                    "كلاهما بالمياه",
+                    "البيضاء بفعل الرياح والسوداء بفعل البراكين",
+                    "كلاهما بالبشر"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من أكون؟ «أكبر الوحدات التضاريسية في مصر»",
+                "options": [
+                    "شبه جزيرة سيناء",
+                    "الدلتا",
+                    "الصحراء الغربية",
+                    "الصحراء الشرقية"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "من أكون؟ «أصغر أقسام سطح مصر مساحة»",
+                "options": [
+                    "الصحراء الغربية",
+                    "سيناء",
+                    "الصحراء الشرقية",
+                    "وادي النيل والدلتا ومنخفض الفيوم"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من أكون؟ «أعلى قمم جبال البحر الأحمر»",
+                "options": [
+                    "جبل الحلال",
+                    "جبل شايب البنات",
+                    "جبل سانت كاترين",
+                    "جبل العوينات"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من أكون؟ «أكبر المنخفضات وهو نادر السكان»",
+                "options": [
+                    "منخفض القطارة",
+                    "منخفض الخارجة",
+                    "منخفض سيوة",
+                    "منخفض الفيوم"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "من أكون؟ «ترعة توصل المياه إلى الفيوم»",
+                "options": [
+                    "ترعة السلام",
+                    "ترعة بحر يوسف",
+                    "ترعة الإسماعيلية",
+                    "قناة السويس"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "من أكون؟ «صحراء جبلية هضبية غنية بالذهب»",
+                "options": [
+                    "الدلتا",
+                    "منخفض الفيوم",
+                    "الصحراء الغربية",
+                    "الصحراء الشرقية"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "من أكون؟ «هضبة في وسط سيناء»",
+                "options": [
+                    "هضبة التيه",
+                    "هضبة العبابدة",
+                    "هضبة الجلف الكبير",
+                    "هضبة المعازة"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "صوّب الخطأ: «يمتد وادي النيل حتى مدينة العريش».",
+                "options": [
+                    "أسوان",
+                    "الإسكندرية",
+                    "سيوة",
+                    "القاهرة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "صوّب الخطأ: «يقع منخفض الفيوم في الصحراء الشرقية».",
+                "options": [
+                    "الجنوبية",
+                    "الغربية",
+                    "سيناء",
+                    "الدلتا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صوّب الخطأ: «تعتمد الزراعة في الوادي والدلتا على المياه الجوفية».",
+                "options": [
+                    "السيول",
+                    "مياه النيل",
+                    "الأمطار",
+                    "البحر"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "صوّب الخطأ: «تكونت جبال البحر الأحمر بفعل الرياح».",
+                "options": [
+                    "الترسيب",
+                    "المياه",
+                    "البشر",
+                    "الانكسارات"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "صوّب الخطأ: «منخفض القطارة مزدحم بالسكان».",
+                "options": [
+                    "صناعي",
+                    "نادر السكان",
+                    "كبير المدن",
+                    "زراعي"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "اختر: أصغر أقسام سطح مصر (سيناء - الوادي والدلتا والفيوم - الصحراء الغربية - الصحراء الشرقية):",
+                "options": [
+                    "سيناء",
+                    "الوادي والدلتا والفيوم",
+                    "الصحراء الشرقية",
+                    "الصحراء الغربية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "اختر: تكونت جبال البحر الأحمر بفعل (الانكسارات - حركة المياه - حركة الهواء - الالتواءات):",
+                "options": [
+                    "حركة الهواء",
+                    "حركة المياه",
+                    "الالتواءات",
+                    "الانكسارات"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "اختر: يوجد في سيناء (جبل سانت كاترين - جبل شايب البنات - هضبة الجلالة القبلية - هضبة الجلالة البحرية):",
+                "options": [
+                    "هضبة الجلالة القبلية",
+                    "جبل شايب البنات",
+                    "هضبة الجلالة البحرية",
+                    "جبل سانت كاترين"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "استبعد الغريب من المنخفضات المأهولة: (سيوة - الداخلة - الخارجة - القطارة)",
+                "options": [
+                    "سيوة",
+                    "الخارجة",
+                    "الداخلة",
+                    "القطارة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "استبعد الغريب من هضاب الصحراء الشرقية: (المعازة - العبابدة - الجلف الكبير)",
+                "options": [
+                    "لا يوجد",
+                    "المعازة",
+                    "الجلف الكبير",
+                    "العبابدة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "استبعد الغريب من العوامل الباطنية: (الالتواءات - الانكسارات - التعرية بالرياح)",
+                "options": [
+                    "لا يوجد",
+                    "الالتواءات",
+                    "الانكسارات",
+                    "التعرية بالرياح"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "استبعد الغريب من جبال سيناء: (سانت كاترين - موسى - الحلال - العوينات)",
+                "options": [
+                    "العوينات",
+                    "الحلال",
+                    "سانت كاترين",
+                    "موسى"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "حدد موقع: هضبة الجلف الكبير:",
+                "options": [
+                    "الدلتا",
+                    "جنوب الصحراء الغربية",
+                    "شمال سيناء",
+                    "الصحراء الشرقية"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "حدد موقع: هضبة المعازة:",
+                "options": [
+                    "جنوب الصحراء الغربية",
+                    "شمال الصحراء الشرقية",
+                    "وسط سيناء",
+                    "الدلتا"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "حدد موقع: جبل الحلال:",
+                "options": [
+                    "شمال سيناء",
+                    "الدلتا",
+                    "الصحراء الشرقية",
+                    "جنوب الصحراء الغربية"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ماذا يحدث لو لم تصل مياه النيل إلى الفيوم؟",
+                "options": [
+                    "لا شيء",
+                    "يصبح منخفضًا صحراويًا غير صالح للزراعة",
+                    "يصبح بحرًا",
+                    "تزيد الزراعة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "لماذا تعد الصحراء الغربية مقصدًا للسياحة البيئية؟",
+                "options": [
+                    "لتنوع مظاهرها كالصحراء البيضاء والسوداء والواحات",
+                    "لكثرة الأمطار",
+                    "لقربها من القاهرة",
+                    "لكثرة المصانع"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "كيف استثمر المصريون القدماء الصحاري؟",
+                "options": [
+                    "زرعوها بالأرز",
+                    "أهملوها",
+                    "أخذوا منها المعادن وبنوا بها المقابر والمعابد والقلاع",
+                    "سكنوها بكثافة"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "ما العلاقة بين مظاهر السطح والأنشطة الاقتصادية؟",
+                "options": [
+                    "لا علاقة",
+                    "تنوع السطح أدى إلى تنوع الأنشطة كالزراعة والتعدين والسياحة",
+                    "علاقة عكسية",
+                    "السطح يمنع الأنشطة"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما القيمة المستفادة من الدرس؟",
+                "options": [
+                    "الإسراف",
+                    "التبذير",
+                    "إهمال البيئة",
+                    "الحفاظ على الموارد وحسن استخدامها للأجيال القادمة"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "لماذا تتركز الزراعة في وادي النيل والدلتا؟",
+                "options": [
+                    "لخصوبة التربة ووفرة المياه العذبة",
+                    "للبرودة",
+                    "لكثرة الرمال",
+                    "لكثرة الجبال"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما الفرق بين وادي النيل والدلتا؟",
+                "options": [
+                    "الوادي على جانبي النهر حتى القاهرة والدلتا مثلث عند المصب",
+                    "الدلتا جنوب مصر",
+                    "الوادي مثلث",
+                    "لا فرق"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "لماذا سميت الأودية الجافة بهذا الاسم؟",
+                "options": [
+                    "لأنها ساحلية",
+                    "لأن المياه كانت تملؤها قديمًا ثم جفت",
+                    "لأنها خصبة",
+                    "لأنها بها أنهار"
+                ],
+                "ans": 1
+            },
+            {
+                "q": "ما مظاهر السطح في شبه جزيرة سيناء؟",
+                "options": [
+                    "منخفضات فقط",
+                    "سهول فقط",
+                    "دلتا",
+                    "جبال وعرة جنوبًا وهضاب وأودية بالوسط وسهول ساحلية شمالًا"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "ما أهمية الصحراء البيضاء للبحث العلمي؟",
+                "options": [
+                    "لا أهمية",
+                    "بها بترول",
+                    "بها بقايا الكائنات الحية التي كانت تعيش قديمًا",
+                    "بها أنهار"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "لماذا تتميز مصر بطبيعة خلابة؟",
+                "options": [
+                    "لتنوع مظاهر سطحها بين نهر وسهول وصحاري وجبال وسواحل",
+                    "لأنها جزيرة",
+                    "لأنها جليدية",
+                    "لأنها غابات"
+                ],
+                "ans": 0
+            },
+            {
+                "q": "ما الذي يدل عليه وجود السهول الساحلية شمالًا وشرقًا؟",
+                "options": [
+                    "وجود الجبال",
+                    "وجود النيل",
+                    "وجود الصحراء",
+                    "إطلالة مصر على البحرين المتوسط والأحمر"
+                ],
+                "ans": 3
+            },
+            {
+                "q": "حدد موقع: جبل العوينات:",
+                "options": [
+                    "الصحراء الشرقية",
+                    "الدلتا",
+                    "الجنوب الغربي لمصر",
+                    "شمال سيناء"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "حدد موقع: منخفض القطارة:",
+                "options": [
+                    "الصحراء الشرقية",
+                    "الدلتا",
+                    "شمال الصحراء الغربية",
+                    "جنوب سيناء"
+                ],
+                "ans": 2
+            },
+            {
+                "q": "حدد موقع: وادي العريش:",
+                "options": [
+                    "الدلتا",
+                    "الصحراء الشرقية",
+                    "سيناء",
+                    "الصحراء الغربية"
+                ],
+                "ans": 2
+            }
+        ]
+    },
+    {
+        "id": "map_6",
+        "title": "تحدي الخرائط والصور",
+        "type": "map",
+        "desc": "اكتشف المخفي على خرائط وصور الكتاب في مظاهر سطح مصر",
+        "icon": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 24 24\"><polygon points=\"1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6\"></polygon><line x1=\"8\" y1=\"2\" x2=\"8\" y2=\"18\"></line><line x1=\"16\" y1=\"6\" x2=\"16\" y2=\"22\"></line></svg>",
+        "questions": [
+            {
+                "q": "ما اسم المكان المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "منخفض الفيوم",
+                    "شبه جزيرة سيناء",
+                    "الدلتا",
+                    "وادي النيل"
+                ],
+                "ans": 2,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        46,
+                        14,
+                        6,
+                        4
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المنخفض المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "منخفض البحرية",
+                    "منخفض الفيوم",
+                    "منخفض سيوة",
+                    "منخفض القطارة"
+                ],
+                "ans": 3,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        19,
+                        23,
+                        12,
+                        10
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المنخفض المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "منخفض الداخلة",
+                    "منخفض سيوة",
+                    "منخفض القطارة",
+                    "منخفض الفيوم"
+                ],
+                "ans": 1,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        10,
+                        29,
+                        7,
+                        5
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المنخفض المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "منخفض الخارجة",
+                    "منخفض سيوة",
+                    "منخفض الفيوم",
+                    "منخفض البحرية"
+                ],
+                "ans": 2,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        42,
+                        29,
+                        7,
+                        5
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم الهضبة المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "هضبة مارمريكا",
+                    "هضبة المعازة",
+                    "هضبة الجلف الكبير",
+                    "هضبة التيه"
+                ],
+                "ans": 0,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        11,
+                        17,
+                        12,
+                        4
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المنخفض المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "منخفض الداخلة",
+                    "منخفض البحرية",
+                    "منخفض الفرافرة",
+                    "منخفض سيوة"
+                ],
+                "ans": 1,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        29,
+                        40,
+                        7,
+                        5
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المنخفض المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "منخفض الداخلة",
+                    "منخفض الفرافرة",
+                    "منخفض البحرية",
+                    "منخفض الخارجة"
+                ],
+                "ans": 1,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        25,
+                        51,
+                        7,
+                        5
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المنخفض المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "منخفض الداخلة",
+                    "منخفض الفرافرة",
+                    "منخفض البحرية",
+                    "منخفض الخارجة"
+                ],
+                "ans": 0,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        30,
+                        61,
+                        7,
+                        5
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المنخفض المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "منخفض سيوة",
+                    "منخفض الفرافرة",
+                    "منخفض الداخلة",
+                    "منخفض الخارجة"
+                ],
+                "ans": 3,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        39,
+                        66,
+                        7,
+                        5
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم الهضبة المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "هضبة العبابدة",
+                    "هضبة المعازة",
+                    "هضبة مارمريكا",
+                    "هضبة الجلف الكبير"
+                ],
+                "ans": 3,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        11,
+                        80,
+                        9,
+                        5
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم الجبل المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "جبل الحلال",
+                    "جبل العوينات",
+                    "جبل سانت كاترين",
+                    "جبل شايب البنات"
+                ],
+                "ans": 1,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        10,
+                        90,
+                        9,
+                        3
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المظهر المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "وادي قنا",
+                    "هضبة مارمريكا",
+                    "بحر الرمال العظيم",
+                    "منخفض القطارة"
+                ],
+                "ans": 2,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        13,
+                        50,
+                        3,
+                        14
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم الهضبة المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "هضبة الجلف الكبير",
+                    "هضبة المعازة",
+                    "هضبة التيه",
+                    "هضبة العبابدة"
+                ],
+                "ans": 1,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        49,
+                        40,
+                        5,
+                        5
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم الجبل المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "جبل شايب البنات",
+                    "جبل سانت كاترين",
+                    "جبل موسى",
+                    "جبل العوينات"
+                ],
+                "ans": 0,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        61,
+                        52,
+                        8,
+                        5
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المظهر المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "جبال البحر الأحمر",
+                    "جبل العوينات",
+                    "هضبة المعازة",
+                    "هضبة الجلف الكبير"
+                ],
+                "ans": 0,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        68,
+                        57,
+                        7,
+                        11
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم الهضبة المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "هضبة مارمريكا",
+                    "هضبة المعازة",
+                    "هضبة العبابدة",
+                    "هضبة الجلف الكبير"
+                ],
+                "ans": 2,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        63,
+                        75,
+                        6,
+                        5
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم البحيرة المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "بحيرة قارون",
+                    "بحيرة المنزلة",
+                    "بحيرة ناصر",
+                    "بحيرة البردويل"
+                ],
+                "ans": 2,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        55,
+                        83,
+                        5,
+                        5
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المكان المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "الصحراء الشرقية",
+                    "شبه جزيرة سيناء",
+                    "الصحراء الغربية",
+                    "الدلتا"
+                ],
+                "ans": 1,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        62,
+                        25,
+                        9,
+                        5
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم الهضبة المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "هضبة التيه",
+                    "هضبة العبابدة",
+                    "هضبة مارمريكا",
+                    "هضبة المعازة"
+                ],
+                "ans": 0,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        65,
+                        32,
+                        6,
+                        3
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم الجبل المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "جبل سانت كاترين",
+                    "جبل العوينات",
+                    "جبل الحلال",
+                    "جبل شايب البنات"
+                ],
+                "ans": 0,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        65,
+                        40,
+                        6,
+                        4
+                    ]
+                ]
+            },
+            {
+                "q": "ما اسم المجرى المائي المخفي اسمه بعلامة (؟) على الخريطة؟",
+                "options": [
+                    "قناة السويس",
+                    "ترعة بحر يوسف",
+                    "ترعة السلام",
+                    "ترعة الإسماعيلية"
+                ],
+                "ans": 1,
+                "img": "images/p5u1l2_surface.jpg",
+                "masks": [
+                    [
+                        34,
+                        36,
+                        9,
+                        3
+                    ]
+                ]
+            },
+            {
+                "q": "تُظهر الصورة نهرًا تمتد على جانبيه السهول الفيضية، ما اسمه؟",
+                "options": [
+                    "ترعة بحر يوسف",
+                    "البحر الأحمر",
+                    "قناة السويس",
+                    "نهر النيل"
+                ],
+                "ans": 3,
+                "img": "images/p5u1l2_nile.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة سلسلة جبال في الصحراء الشرقية، ما اسمها؟",
+                "options": [
+                    "جبل العوينات",
+                    "هضبة الجلف الكبير",
+                    "هضبة التيه",
+                    "جبال البحر الأحمر"
+                ],
+                "ans": 3,
+                "img": "images/p5u1l2_redmts.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة شاطئًا جميلًا يجذب السائحين، ما مظهر السطح الظاهر؟",
+                "options": [
+                    "المنخفضات",
+                    "الجبال",
+                    "الهضاب",
+                    "السهول الساحلية"
+                ],
+                "ans": 3,
+                "img": "images/p5u1l2_coast.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة تلالًا رملية تشكلت بفعل الرياح، ما اسمها؟",
+                "options": [
+                    "الكثبان الرملية",
+                    "الأودية الجافة",
+                    "الهضاب",
+                    "المنخفضات"
+                ],
+                "ans": 0,
+                "img": "images/p5u1l2_dunes.jpg",
+                "masks": []
+            },
+            {
+                "q": "تشكل المظهر الظاهر في الصورة بفعل:",
+                "options": [
+                    "الالتواءات",
+                    "التعرية بفعل الرياح",
+                    "الانكسارات",
+                    "التعرية المائية"
+                ],
+                "ans": 1,
+                "img": "images/p5u1l2_dunes.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة جبلًا وعرًا في جنوب سيناء، ما اسمه؟",
+                "options": [
+                    "جبل الحلال",
+                    "جبل شايب البنات",
+                    "جبل سانت كاترين",
+                    "جبل العوينات"
+                ],
+                "ans": 2,
+                "img": "images/p5u1l2_catherine.jpg",
+                "masks": []
+            },
+            {
+                "q": "يوضح الشكل حركات أرضية من الارتفاع والانخفاض، ما اسمها؟",
+                "options": [
+                    "الحركات الالتوائية",
+                    "التعرية المائية",
+                    "الحركات الانكسارية",
+                    "التعرية بالرياح"
+                ],
+                "ans": 2,
+                "img": "images/p5u1l2_fault.jpg",
+                "masks": []
+            },
+            {
+                "q": "يوضح الشكل حركات أرضية تحدث بالضغط الجانبي، ما اسمها؟",
+                "options": [
+                    "الحركات الالتوائية",
+                    "الحركات الانكسارية",
+                    "التعرية بالرياح",
+                    "الترسيب"
+                ],
+                "ans": 0,
+                "img": "images/p5u1l2_fold.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُعد الحركات الظاهرة في الشكل من العوامل:",
+                "options": [
+                    "الباطنية",
+                    "البشرية",
+                    "الخارجية",
+                    "المناخية"
+                ],
+                "ans": 0,
+                "img": "images/p5u1l2_fold.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة تكوينات صخرية جيرية بيضاء في واحة الفرافرة، ما اسمها؟",
+                "options": [
+                    "بحر الرمال العظيم",
+                    "الصحراء البيضاء",
+                    "منخفض القطارة",
+                    "الصحراء السوداء"
+                ],
+                "ans": 1,
+                "img": "images/p5u1l2_white.jpg",
+                "masks": []
+            },
+            {
+                "q": "تُظهر الصورة صحراء يغطيها اللون الأسود بسبب بقايا الانفجارات البركانية، ما اسمها؟",
+                "options": [
+                    "الصحراء البيضاء",
+                    "هضبة التيه",
+                    "بحر الرمال العظيم",
+                    "الصحراء السوداء"
+                ],
+                "ans": 3,
+                "img": "images/p5u1l2_black.jpg",
+                "masks": []
+            }
+        ]
+    }
+];
+
+    // --- محرك الصوت للمؤثرات التفاعلية ---
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio() {
+        if (!audioCtx) {
+            audioCtx = new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audioCtx.resume();
+        }
+    }
+
+    function playTone(freq, type, duration, vol = 0.1) {
+        if (!audioCtx) return;
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(vol, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+    }
+
+    function playCorrect() {
+        initAudio();
+        playTone(523.25, 'sine', 0.1, 0.1); 
+        setTimeout(() => playTone(659.25, 'sine', 0.1, 0.1), 100); 
+        setTimeout(() => playTone(783.99, 'sine', 0.2, 0.15), 200); 
+        setTimeout(() => playTone(1046.50, 'sine', 0.4, 0.2), 300); 
+        triggerConfetti();
+    }
+
+    function playWrong() {
+        initAudio();
+        playTone(300, 'sawtooth', 0.15, 0.1);
+        setTimeout(() => playTone(200, 'sawtooth', 0.25, 0.15), 150);
+        
+        const qBox = document.querySelector('.question-box');
+        if(qBox) {
+            qBox.classList.remove('shake');
+            void qBox.offsetWidth; 
+            qBox.classList.add('shake');
+        }
+    }
+
+    // --- مؤثرات بصرية ---
+    function triggerConfetti() {
+        const colors = ['#f72585', '#4cc9f0', '#fee440', '#00f5d4', '#8b5cf6'];
+        for(let i=0; i<40; i++) {
+            let conf = document.createElement('div');
+            conf.className = 'confetti';
+            conf.style.left = Math.random() * 100 + 'vw';
+            conf.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            conf.style.animationDuration = (Math.random() * 2 + 1) + 's';
+            document.body.appendChild(conf);
+            setTimeout(() => conf.remove(), 3000);
+        }
+    }
+
+    function shuffleArray(arr) {
+        return arr.map(a => ({sort: Math.random(), value: a}))
+            .sort((a, b) => a.sort - b.sort)
+            .map(a => a.value);
+    }
+
+    function showFeedback(isCorrect, callback) {
+        if (teamMode) { onTeamAnswer(isCorrect); }
+        const modal = document.getElementById('feedback-modal');
+        const icon = document.getElementById('feedback-icon');
+        const title = document.getElementById('feedback-title');
+        
+        if (isCorrect) {
+            playCorrect();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>`;
+            title.textContent = 'إجابة صحيحة، بطل!';
+            title.style.color = 'var(--success)';
+        } else {
+            playWrong();
+            icon.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--danger)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>`;
+            title.textContent = 'إجابة خاطئة!';
+            title.style.color = 'var(--danger)';
+        }
+
+        if (teamMode) { teamFeedbackText(isCorrect, title); } else { title.style.fontSize = ''; }
+        modal.classList.add('active');
+        setTimeout(() => {
+            modal.classList.remove('active');
+            if (callback) callback();
+        }, 1300); // وقت الانتقال للسؤال التالي
+    }
+
+    // --- متغيرات محرك اللعبة ---
+    let currentGame = null;
+    let currentQuestions = [];
+    let qIndex = 0;
+    let animInterval = null;
+    let geniusTimerInterval = null;
+    let wrongAnswers = []; // مصفوفة لتخزين الأخطاء
+
+    // --- التهيئة ---
+    function initApp() {
+        const menuGrid = document.getElementById('menu-grid');
+        menuGrid.innerHTML = '';
+        allGamesData.forEach(game => {
+            const card = document.createElement('div');
+            card.className = 'menu-card';
+            card.innerHTML = `
+                <div class="icon-container">${game.icon}</div>
+                <h3>${game.title}</h3>
+                <p>${game.desc}</p>
+            `;
+            card.onclick = () => startGame(game);
+            menuGrid.appendChild(card);
+        });
+        
+        document.body.addEventListener('touchstart', initAudio, { once: true });
+        document.body.addEventListener('click', initAudio, { once: true });
+    }
+
+    function returnToMenu() {
+        document.getElementById('team-board').classList.remove('show'); teamMode = false;
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        document.getElementById('game-screen').classList.add('hidden');
+        document.getElementById('home-screen').classList.remove('hidden');
+        document.getElementById('main-header').classList.remove('hidden');
+        document.getElementById('main-footer').classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        document.getElementById('game-progress').innerText = `${qIndex + 1} / ${currentQuestions.length}`;
+        updateTeamBoard();
+    }
+
+    function gameComplete() {
+        if (teamMode) { teamGameComplete(); return; }
+        const gc = document.getElementById('game-container');
+        playCorrect();
+        setTimeout(playCorrect, 300);
+
+        let score = currentQuestions.length - wrongAnswers.length;
+        let summaryHTML = '';
+
+        if (wrongAnswers.length > 0) {
+            summaryHTML += `
+            <div style="margin-top: 25px; text-align: right; background: #f8fafc; padding: 20px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 350px; overflow-y: auto;" class="errors-list">
+                <h3 style="color: var(--danger); margin-bottom: 15px; text-align: center; font-size: 1.4rem;">الأسئلة التي أخطأت فيها 📝</h3>
+                <ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 15px;">`;
+            
+            wrongAnswers.forEach((item, index) => {
+                summaryHTML += `
+                <li style="background: white; padding: 15px; border-radius: 10px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); border-right: 5px solid var(--danger);">
+                    <div style="font-weight: bold; color: var(--primary); margin-bottom: 8px; font-size: 1.1rem;">${index + 1}. ${item.question}</div>
+                    <div style="color: #64748b; font-size: 1rem; margin-bottom: 5px;">إجابتك: <span style="color: var(--danger); text-decoration: line-through;">${item.selected}</span></div>
+                    <div style="color: var(--success); font-weight: bold; font-size: 1.1rem;">الإجابة الصحيحة: ${item.correct}</div>
+                </li>`;
+            });
+            summaryHTML += `</ul></div>`;
+        } else {
+            summaryHTML += `<p style="color: var(--success); font-size: 1.5rem; font-weight: bold; margin-top: 20px;">أداء مثالي! لم تخطئ في أي سؤال 🌟</p>`;
+        }
+
+        gc.innerHTML = `
+            <div style="text-align:center; padding: 40px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+                <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21h10"/><path d="M12 17v4"/><path d="M12 3v14"/><path d="M5 7h14"/><path d="M12 3l-4 4 4 4 4-4-4-4z"/></svg>
+                </div>
+                <h2 style="color: var(--primary); margin-bottom: 10px; font-size:2rem; font-weight:800;">انتهت اللعبة!</h2>
+                <p style="font-size: 1.4rem; margin-bottom: 10px; color:#64748b; font-weight:bold;">نتيجتك: ${score} من ${currentQuestions.length}</p>
+                ${summaryHTML}
+                <div class="share-box">
+                    <h4>📲 أرسل نتيجتك إلى الأستاذ أحمد نورالدين</h4>
+                    <input type="text" id="student-name-input" class="share-name-input" placeholder="اكتب اسمك هنا أولًا">
+                    <div id="share-warning" class="share-warning">من فضلك اكتب اسمك أولًا قبل الإرسال ✋</div>
+                    <div>
+                        <button class="btn btn-share" onclick="sendResultToTeacher(${score}, ${currentQuestions.length})">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 0C5.385 0 0 5.385 0 12.031c0 2.656.843 5.12 2.26 7.15L.626 24l5.01-1.61c1.983 1.25 4.27 1.91 6.395 1.91 6.646 0 12.03-5.385 12.03-12.031S18.677 0 12.031 0zm6.544 17.202c-.273.766-1.58 1.464-2.185 1.503-.56.035-1.28.23-4.085-.86-3.39-1.32-5.59-4.78-5.736-4.97-.145-.19-1.37-1.82-1.37-3.475 0-1.655.857-2.47 1.164-2.8.307-.33.67-.413.89-.413.22 0 .44 0 .633.01.205.01.482-.08.736.53.264.634.904 2.203.984 2.366.08.163.133.353.033.553-.1.2-.153.326-.307.506-.154.18-.32.38-.453.506-.153.153-.314.316-.134.626.18.31.8 1.32 1.71 2.13.176.157.363.31.558.45 1.05.76 1.83 1.05 2.13 1.18.3.13.474.11.652-.09.18-.205.766-.893.97-1.2.204-.307.41-.256.69-.153.28.103 1.77.836 2.074.99.304.153.506.23.582.356.076.126.076.73-.197 1.496z"/></svg>
+                            إرسال النتيجة عبر واتساب
+                        </button>
+                    </div>
+                </div>
+                <button class="btn back-btn" style="font-size:1.1rem; padding:15px 30px; margin-top: 18px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button>
+            </div>
+        `;
+    }
+
+    function sendResultToTeacher(score, total) {
+        const nameInput = document.getElementById('student-name-input');
+        const warning = document.getElementById('share-warning');
+        const name = nameInput.value.trim();
+        if (!name) {
+            warning.style.display = 'block';
+            nameInput.classList.add('shake');
+            nameInput.focus();
+            setTimeout(() => nameInput.classList.remove('shake'), 500);
+            return;
+        }
+        warning.style.display = 'none';
+        const gameTitle = currentGame ? currentGame.title : '';
+        const message =
+            `📚 نتيجة طالب - ${LESSON_NAME}\n` +
+            `👤 اسم الطالب: ${name}\n` +
+            `🎮 اللعبة: ${gameTitle}\n` +
+            `✅ النتيجة: ${score} من ${total}\n` +
+            `⭐ نسبة النجاح: ${Math.round((score/total)*100)}%`;
+        const url = `https://wa.me/201022364812?text=${encodeURIComponent(message)}`;
+        window.open(url, '_blank');
+    }
+
+    function beginGame(gameData) {
+        initAudio();
+        currentGame = gameData;
+        currentQuestions = shuffleArray([...gameData.questions]).slice(0, QUESTIONS_PER_ROUND);
+        qIndex = 0;
+        wrongAnswers = []; // تصفير قائمة الأخطاء
+        
+        document.getElementById('home-screen').classList.add('hidden');
+        document.getElementById('main-header').classList.add('hidden');
+        document.getElementById('main-footer').classList.add('hidden');
+        document.getElementById('game-screen').classList.remove('hidden');
+        document.getElementById('game-title').innerText = gameData.title;
+        
+        renderNextState();
+    }
+
+    function renderNextState() {
+        if (qIndex >= currentQuestions.length) {
+            gameComplete();
+            return;
+        }
+
+        const gc = document.getElementById('game-container');
+        gc.innerHTML = '';
+        updateProgress();
+
+        if (currentGame.type === 'mcq') {
+            renderMCQ(gc);
+        } else if (currentGame.type === 'bubbles') {
+            renderBubbles(gc);
+        } else if (currentGame.type === 'shooting') {
+            renderShooting(gc);
+        } else if (currentGame.type === 'true_false') {
+            renderTrueFalse(gc);
+        } else if (currentGame.type === 'genius') {
+            renderGenius(gc);
+        } else if (currentGame.type === 'map') {
+            renderMap(gc);
+        }
+    }
+
+    // --- أنماط الألعاب ---
+
+    // 1. اختيارات (MCQ)
+    function renderMCQ(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const btnContainer = document.createElement('div');
+        btnContainer.className = 'options-grid';
+        
+        let isAnswered = false;
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            btnContainer.appendChild(btn);
+        });
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        container.appendChild(qBox);
+        container.appendChild(btnContainer);
+    }
+
+    // 2. صح أم خطأ
+    function renderTrueFalse(container) {
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const tfContainer = document.createElement('div');
+        tfContainer.className = 'tf-grid';
+        
+        let isAnswered = false;
+
+        // ترتيب ثابت (صح يميناً وخطأ يساراً)
+        const fixedOptions = ["صح", "خطأ"];
+
+        fixedOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.style.flex = '1';
+            btn.style.minWidth = '200px';
+            btn.style.fontSize = '2rem';
+            btn.style.padding = '30px';
+            btn.style.justifyContent = 'center';
+            
+            if(opt === "صح") {
+                btn.style.background = "linear-gradient(to bottom, #10b981, #0e7490)";
+                btn.style.borderBottomColor = "#047857";
+            } else {
+                btn.style.background = "linear-gradient(to bottom, #ef4444, #dc2626)";
+                btn.style.borderBottomColor = "#b91c1c";
+            }
+
+            btn.innerText = opt;
+            
+            btn.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    btn.classList.add('btn-wrong');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+            tfContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(tfContainer);
+    }
+
+    // 5. تحدي العباقرة (سؤال بعدّاد زمني)
+    function renderGenius(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const wrap = document.createElement('div');
+        wrap.className = 'genius-wrap';
+
+        const badge = document.createElement('div');
+        badge.className = 'genius-badge';
+        badge.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.663 17h4.673M12 3a6 6 0 0 0-6 6c0 1.887.454 2.921 1.5 4.5.5.75 1 1.5 1 2.5h7c0-1 .5-1.75 1-2.5C17.546 11.921 18 10.887 18 9a6 6 0 0 0-6-6z"></path></svg> تحدي العباقرة`;
+
+        const timerTrack = document.createElement('div');
+        timerTrack.className = 'genius-timer-track';
+        const timerBar = document.createElement('div');
+        timerBar.className = 'genius-timer-bar';
+        timerTrack.appendChild(timerBar);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.style.background = 'rgba(255,255,255,0.95)';
+        qBox.innerText = qData.q;
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'genius-options';
+
+        let isAnswered = false;
+        const TOTAL_TIME = 12000; // 12 ثانية لكل سؤال
+        let startTime = Date.now();
+
+        function finishQuestion(isCorrect, selectedText) {
+            if (isAnswered) return;
+            isAnswered = true;
+            clearInterval(geniusTimerInterval);
+            if (!isCorrect) {
+                wrongAnswers.push({ question: qData.q, correct: correctText, selected: selectedText || "انتهى الوقت!" });
+            }
+            showFeedback(isCorrect, () => { qIndex++; renderNextState(); });
+        }
+
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                if (opt === correctText) {
+                    btn.classList.add('btn-correct');
+                    finishQuestion(true, opt);
+                } else {
+                    btn.classList.add('btn-wrong');
+                    finishQuestion(false, opt);
+                }
+            };
+            optContainer.appendChild(btn);
+        });
+
+        wrap.appendChild(badge);
+        wrap.appendChild(timerTrack);
+        container.appendChild(wrap);
+        container.appendChild(qBox);
+        container.appendChild(optContainer);
+
+        geniusTimerInterval = setInterval(() => {
+            if (isAnswered) { clearInterval(geniusTimerInterval); return; }
+            const elapsed = Date.now() - startTime;
+            const pct = Math.max(0, 100 - (elapsed / TOTAL_TIME) * 100);
+            timerBar.style.width = pct + '%';
+            if (elapsed >= TOTAL_TIME) {
+                clearInterval(geniusTimerInterval);
+                finishQuestion(false, null);
+            }
+        }, 80);
+    }
+
+    // 3. الفقاعات المتساقطة
+    function renderBubbles(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'bubbles-area';
+
+        let bubbles = [];
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bubble = document.createElement('div');
+            bubble.className = 'bubble';
+            bubble.innerHTML = `<span>${opt}</span>`;
+            
+            let leftPos = 2 + (index * 24); 
+            bubble.style.left = leftPos + '%';
+            
+            let topPos = -100 - (Math.random() * 80);
+            bubble.style.top = topPos + 'px';
+            
+            let speed = 0.95 + Math.random() * 0.65; 
+
+            bubble.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                if (opt === correctText) {
+                    bubble.style.background = 'var(--success)';
+                    bubble.style.color = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bubble.style.background = 'var(--danger)';
+                    bubble.style.color = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bubble);
+            bubbles.push({ el: bubble, top: topPos, speed: speed, isCorrect: opt === correctText, active: true });
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.innerHTML = `💡 اضغط على الفقاعة التي تحمل الإجابة الصحيحة قبل أن تسقط!`;
+        container.appendChild(hint);
+
+        let areaHeight = 400;
+
+        animInterval = setInterval(() => {
+            if (isAnswered) return;
+            bubbles.forEach(b => {
+                if (!b.active) return;
+                b.top += b.speed;
+                b.el.style.top = b.top + 'px';
+                
+                b.el.style.transform = `translateX(${Math.sin(b.top / 20) * 5}px)`;
+
+                if (b.top > areaHeight) {
+                    b.active = false;
+                    b.el.style.display = 'none';
+                    if (b.isCorrect && !isAnswered) {
+                        isAnswered = true;
+                        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+                        wrongAnswers.push({ question: qData.q, correct: correctText, selected: "سقطت دون اختيار" });
+                        showFeedback(false, () => { qIndex++; renderNextState(); });
+                    }
+                }
+            });
+        }, 30);
+    }
+
+    // 4. التنشين
+    function renderShooting(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+        
+        const area = document.createElement('div');
+        area.className = 'shooting-area';
+
+        let isAnswered = false;
+
+        shuffledOptions.forEach((opt, index) => {
+            const bird = document.createElement('div');
+            bird.className = 'target-bird';
+            
+            bird.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> <span>${opt}</span>`;
+            
+            let topPos = 15 + (index * 20); 
+            bird.style.top = topPos + '%';
+            
+            let pos = (index % 2 === 0) ? -200 : window.innerWidth;
+            let speed = (Math.random() * 2.5 + 1.5) * ((index % 2 === 0) ? 1 : -1);
+            
+            bird.style.left = pos + 'px';
+
+            bird.onclick = () => {
+                if(isAnswered) return;
+                isAnswered = true;
+
+                if (opt === correctText) {
+                    bird.style.background = 'var(--success)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    showFeedback(true, () => { qIndex++; renderNextState(); });
+                } else {
+                    bird.style.background = 'var(--danger)';
+                    bird.style.color = 'white';
+                    bird.style.borderColor = 'white';
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                    showFeedback(false, () => { qIndex++; renderNextState(); });
+                }
+            };
+
+            area.appendChild(bird);
+
+            animInterval = setInterval(() => {
+                if (isAnswered) return;
+                pos += speed;
+                if (pos > window.innerWidth + 50) pos = -250;
+                if (pos < -250) pos = window.innerWidth + 50;
+                bird.style.left = pos + 'px';
+            }, 20);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(area);
+        
+        let hint = document.createElement('div');
+        hint.style.textAlign = 'center';
+        hint.style.marginTop = '15px';
+        hint.style.color = 'var(--primary)';
+        hint.style.fontWeight = 'bold';
+        hint.style.fontSize = '1.1rem';
+        hint.style.display = 'flex';
+        hint.style.alignItems = 'center';
+        hint.style.justifyContent = 'center';
+        hint.style.gap = '8px';
+        hint.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg> اضغط على الإجابة الصحيحة وهي تتحرك لاصطيادها!`;
+        container.appendChild(hint);
+    }
+
+
+    // 6. تحدي الخرائط والصور
+    function renderMap(container) {
+        clearInterval(animInterval); clearInterval(geniusTimerInterval);
+        const qData = currentQuestions[qIndex];
+        const correctText = qData.options[qData.ans];
+        const shuffledOptions = shuffleArray([...qData.options]);
+
+        const qBox = document.createElement('div');
+        qBox.className = 'question-box';
+        qBox.innerText = qData.q;
+
+        const stage = document.createElement('div');
+        stage.className = 'map-stage';
+        const wrap = document.createElement('div');
+        wrap.className = 'map-wrap';
+        const img = document.createElement('img');
+        img.src = qData.img;
+        img.alt = 'خريطة أو صورة من الكتاب المدرسي';
+        wrap.appendChild(img);
+        const masks = [];
+        (qData.masks || []).forEach(m => {
+            const d = document.createElement('div');
+            d.className = 'map-mask';
+            d.style.left = m[0] + '%'; d.style.top = m[1] + '%';
+            d.style.width = m[2] + '%'; d.style.height = m[3] + '%';
+            d.textContent = '؟';
+            wrap.appendChild(d); masks.push(d);
+        });
+        stage.appendChild(wrap);
+        wrap.onclick = () => stage.classList.toggle('zoomed');
+        const hint = document.createElement('div');
+        hint.className = 'map-hint';
+        hint.textContent = (masks.length ? '💡 الإجابة مخفية تحت المربع البرتقالي (؟) • ' : '💡 ') + 'اضغط على الصورة لتكبيرها';
+        stage.appendChild(hint);
+
+        const optContainer = document.createElement('div');
+        optContainer.className = 'map-options';
+        let isAnswered = false;
+        const btns = [];
+        shuffledOptions.forEach(opt => {
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.innerText = opt;
+            btn.onclick = () => {
+                if (isAnswered) return;
+                isAnswered = true;
+                const ok = opt === correctText;
+                masks.forEach(d => d.classList.add('revealed'));
+                btns.forEach(b => { if (b.innerText === correctText) b.classList.add('ok'); });
+                if (!ok) {
+                    btn.classList.add('bad');
+                    wrongAnswers.push({ question: qData.q, correct: correctText, selected: opt });
+                }
+                setTimeout(() => showFeedback(ok, () => { qIndex++; renderNextState(); }), 1100);
+            };
+            btns.push(btn);
+            optContainer.appendChild(btn);
+        });
+
+        container.appendChild(qBox);
+        container.appendChild(stage);
+        container.appendChild(optContainer);
+    }
+
+
+    // --- طريقة اللعب: فردي أو منافسة بين فريقين ---
+    const QUESTIONS_PER_ROUND = 20;
+    let teamMode = false;
+    let teamNames = ['الفريق الأول', 'الفريق الثاني'];
+    let teamScores = [0, 0];
+    let pendingGame = null;
+
+    function startGame(gameData) {
+        initAudio();
+        pendingGame = gameData;
+        document.getElementById('mode-game-title').textContent = gameData.title;
+        document.getElementById('team-setup').classList.remove('show');
+        document.getElementById('mode-overlay').classList.add('active');
+    }
+    function closeModePicker() { document.getElementById('mode-overlay').classList.remove('active'); }
+    function chooseSolo() {
+        teamMode = false; closeModePicker();
+        document.getElementById('team-board').classList.remove('show');
+        beginGame(pendingGame);
+    }
+    function chooseTeams() {
+        document.getElementById('team-setup').classList.add('show');
+        setTimeout(() => document.getElementById('team-a').select(), 50);
+    }
+    function startTeams() {
+        const a = document.getElementById('team-a').value.trim() || 'الفريق الأول';
+        const b = document.getElementById('team-b').value.trim() || 'الفريق الثاني';
+        teamNames = [a, b === a ? b + ' (٢)' : b];
+        teamScores = [0, 0];
+        teamMode = true; closeModePicker();
+        document.getElementById('team-name-0').textContent = teamNames[0];
+        document.getElementById('team-name-1').textContent = teamNames[1];
+        document.getElementById('team-board').classList.add('show');
+        beginGame(pendingGame);
+        updateTeamBoard();
+    }
+    function currentTeam() { return qIndex % 2; }
+    function updateTeamBoard() {
+        if (!teamMode) return;
+        for (let i = 0; i < 2; i++) {
+            document.getElementById('team-score-' + i).textContent = teamScores[i];
+            document.getElementById('team-card-' + i).classList.toggle('active', i === currentTeam() && qIndex < currentQuestions.length);
+        }
+    }
+    function onTeamAnswer(isCorrect) {
+        if (isCorrect) teamScores[currentTeam()]++;
+        updateTeamBoard();
+    }
+    function teamFeedbackText(isCorrect, titleEl) {
+        const t = teamNames[currentTeam()];
+        titleEl.textContent = isCorrect ? ('نقطة لـ ' + t + '! 🎉') : ('إجابة خاطئة يا ' + t);
+        titleEl.style.fontSize = '2rem';
+    }
+    function teamGameComplete() {
+        const gc = document.getElementById('game-container');
+        playCorrect(); setTimeout(playCorrect, 300);
+        document.getElementById('team-card-0').classList.remove('active');
+        document.getElementById('team-card-1').classList.remove('active');
+        let banner;
+        if (teamScores[0] === teamScores[1]) banner = '🤝 تعادل! أداء رائع من الفريقين';
+        else banner = '🏆 الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]);
+        let wrongHTML = '';
+        if (wrongAnswers.length > 0) {
+            wrongHTML = '<div style="margin-top: 18px; text-align: right; background: #f8fafc; padding: 16px; border-radius: 15px; border: 2px solid #e2e8f0; max-height: 300px; overflow-y: auto;" class="errors-list"><h3 style="color: var(--danger); margin-bottom: 12px; text-align: center; font-size: 1.25rem;">مراجعة الأسئلة التي تمت الإجابة عنها خطأ 📝</h3><ul style="list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px;">';
+            wrongAnswers.forEach((item, i) => {
+                wrongHTML += '<li style="background: white; padding: 12px; border-radius: 10px; border-right: 5px solid var(--danger);"><div style="font-weight: bold; color: var(--primary); margin-bottom: 6px;">' + (i + 1) + '. ' + item.question + '</div><div style="color: var(--success); font-weight: bold;">الإجابة الصحيحة: ' + item.correct + '</div></li>';
+            });
+            wrongHTML += '</ul></div>';
+        }
+        gc.innerHTML = '<div style="text-align:center; padding: 30px 20px; background: white; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">'
+            + '<h2 style="color: var(--primary); font-size: 2rem; font-weight: 900;">انتهت المنافسة!</h2>'
+            + '<div class="winner-box"><h3>' + banner + '</h3><div class="final-scores"><div>' + teamNames[0] + ': ' + teamScores[0] + '</div><div>' + teamNames[1] + ': ' + teamScores[1] + '</div></div></div>'
+            + wrongHTML
+            + '<div class="share-box"><h4>📲 أرسل نتيجة المنافسة إلى الأستاذ أحمد نورالدين</h4><button class="btn btn-share" onclick="sendTeamResult()">إرسال النتيجة عبر واتساب</button></div>'
+            + '<div style="display:flex; gap:10px; justify-content:center; flex-wrap:wrap; margin-top: 18px;">'
+            + '<button class="btn" style="padding:14px 26px;" onclick="startTeamsAgain()">🔄 منافسة جديدة بأسئلة مختلفة</button>'
+            + '<button class="btn back-btn" style="padding:14px 26px;" onclick="returnToMenu()">العودة للقائمة الرئيسية</button></div></div>';
+        triggerConfetti();
+    }
+    function startTeamsAgain() { teamScores = [0, 0]; beginGame(pendingGame); updateTeamBoard(); }
+    function sendTeamResult() {
+        const gameTitle = currentGame ? currentGame.title : '';
+        let res = teamScores[0] === teamScores[1] ? 'تعادل' : ('الفائز: ' + (teamScores[0] > teamScores[1] ? teamNames[0] : teamNames[1]));
+        const message = '🏆 نتيجة منافسة - ' + LESSON_NAME + '\n🎮 اللعبة: ' + gameTitle + '\n'
+            + '🔵 ' + teamNames[0] + ': ' + teamScores[0] + '\n🟠 ' + teamNames[1] + ': ' + teamScores[1] + '\n✅ ' + res;
+        window.open('https://wa.me/201022364812?text=' + encodeURIComponent(message), '_blank');
+    }
+
+    window.onload = initApp;
+</script>
+</body>
+</html>
